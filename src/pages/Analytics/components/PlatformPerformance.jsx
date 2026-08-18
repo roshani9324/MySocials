@@ -1,23 +1,28 @@
-import { ArrowUpRight, Instagram, Facebook, Linkedin } from "lucide-react";
+import { ArrowUpRight} from "lucide-react";
+import {
+  FaInstagram,
 
+  FaLinkedin,
+  FaFacebookF,
+} from "react-icons/fa";
 const platforms = [
   {
     name: "Instagram",
-    icon: Instagram,
+    icon: FaInstagram,
     followers: "12.8K",
     engagement: "8.4%",
     posts: 86,
   },
   {
     name: "Facebook",
-    icon: Facebook,
+    icon: FaFacebookF,
     followers: "4.2K",
     engagement: "6.8%",
     posts: 64,
   },
   {
     name: "LinkedIn",
-    icon: Linkedin,
+    icon: FaLinkedin,
     followers: "1.9K",
     engagement: "9.2%",
     posts: 52,

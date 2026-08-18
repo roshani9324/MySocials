@@ -1,33 +1,32 @@
 import { useState } from "react";
 import {
-  Instagram,
-  Youtube,
-  Linkedin,
-  Facebook,
-  AtSign,
-  Check,
-} from "lucide-react";
-
+  FaInstagram,
+  FaYoutube,
+  FaLinkedin,
+  FaFacebookF,
+ 
+} from "react-icons/fa";
+import { AtSign, Check } from "lucide-react";
 const platforms = [
   {
     id: "instagram",
     name: "Instagram",
-    icon: Instagram,
+    icon: FaInstagram,
   },
   {
     id: "youtube",
     name: "YouTube",
-    icon: Youtube,
+    icon: FaYoutube,
   },
   {
     id: "linkedin",
     name: "LinkedIn",
-    icon: Linkedin,
+    icon: FaLinkedin,
   },
   {
     id: "facebook",
     name: "Facebook",
-    icon: Facebook,
+    icon: FaFacebookF,
   },
   {
     id: "threads",

@@ -1,11 +1,15 @@
 import {
-  Instagram,
+
   MoreHorizontal,
   Heart,
   MessageCircle,
   Send,
   Bookmark,
 } from "lucide-react";
+import {
+  FaInstagram,
+  
+} from "react-icons/fa";
 
 export default function PostPreview() {
   return (
@@ -74,7 +78,7 @@ export default function PostPreview() {
               "
               />
 
-              <Instagram size={48} className="text-emerald-300 relative" />
+              <FaInstagram size={48} className="text-emerald-300 relative" />
             </div>
 
             <div
@@ -127,7 +131,7 @@ export default function PostPreview() {
 
           <div className="flex items-center gap-2">
             <div className="w-9 h-9 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center">
-              <Instagram size={16} className="text-emerald-400" />
+              <FaInstagram size={16} className="text-emerald-400" />
             </div>
 
             <span className="text-xs text-gray-400">Instagram</span>
