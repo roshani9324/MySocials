@@ -8,6 +8,7 @@ import SignIn from "./pages/SignIn/SignIn";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import CreatePost from "./pages/CreatePost/CreatePost"
 
 function Placeholder({ title }) {
   return (
@@ -48,10 +49,7 @@ function App() {
         {/* Dashboard — ab DashboardLayout ke andar wrapped */}
         <Route element={<DashboardLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route
-            path="/create-post"
-            element={<Placeholder title="Create Post" />}
-          />
+          <Route path="/create-post" element={<CreatePost />} />
           <Route path="/calendar" element={<Placeholder title="Calendar" />} />
           <Route path="/content" element={<Placeholder title="Content" />} />
           <Route
