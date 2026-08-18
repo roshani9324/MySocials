@@ -1,0 +1,673 @@
+/* =========================================
+   DASHBOARD
+========================================= */
+
+.dashboard-page {
+    width: 100%;
+    min-height: calc(100vh - 72px);
+    padding: 42px 48px 60px;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   WELCOME
+========================================= */
+
+.dashboard-welcome {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.welcome-date {
+    margin: 0 0 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: #557067;
+}
+
+.dashboard-welcome h1 {
+    margin: 0;
+    font-size: clamp(32px, 3vw, 46px);
+    line-height: 1.05;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    color: #f2f7f5;
+}
+
+.dashboard-welcome h1 span {
+    color: #65e6a4;
+    font-size: 25px;
+}
+
+.welcome-description {
+    margin: 14px 0 0;
+    max-width: 360px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #6d8078;
+}
+
+.date-filter {
+    height: 40px;
+    padding: 0 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.025);
+    color: #9aaca5;
+    outline: none;
+    font-size: 12px;
+}
+
+/* =========================================
+   COMMON CARD
+========================================= */
+
+.dashboard-card {
+    background:
+        linear-gradient(145deg,
+            rgba(18, 31, 27, 0.82),
+            rgba(8, 15, 13, 0.92));
+
+    border: 1px solid rgba(130, 170, 155, 0.13);
+
+    border-radius: 14px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.025),
+        0 15px 45px rgba(0, 0, 0, 0.12);
+
+    backdrop-filter: blur(18px);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-2px);
+
+    border-color:
+        rgba(83, 229, 158, 0.22);
+}
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 14px;
+
+    margin-bottom: 14px;
+}
+
+.stats-card {
+    min-height: 150px;
+    padding: 18px;
+    box-sizing: border-box;
+}
+
+.stats-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stats-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    color: #5ce3a0;
+
+    background:
+        rgba(50, 220, 140, 0.08);
+
+    border:
+        1px solid rgba(70, 230, 150, 0.12);
+}
+
+.stats-change {
+    font-size: 10px;
+    color: #62d99d;
+}
+
+.stats-title {
+    margin: 22px 0 5px;
+
+    font-size: 11px;
+    color: #6f817a;
+}
+
+.stats-value {
+    margin: 0;
+
+    font-size: 26px;
+    font-weight: 600;
+
+    color: #eef6f2;
+
+    letter-spacing: -0.03em;
+}
+
+.stats-subtitle {
+    margin: 5px 0 0;
+
+    font-size: 9px;
+    color: #42534d;
+}
+
+/* =========================================
+   MAIN GRID
+========================================= */
+
+.dashboard-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.5fr) minmax(280px, 1fr) minmax(230px, 0.8fr) minmax(230px, 0.8fr);
+
+    gap: 14px;
+}
+
+/* =========================================
+   CARD HEADER
+========================================= */
+
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 12px;
+}
+
+.card-header h2 {
+    margin: 3px 0 0;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #e7efeb;
+}
+
+.eyebrow {
+    margin: 0;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+
+    color: #4da57a;
+}
+
+.view-all {
+    border: none;
+    background: none;
+
+    color: #5bdc9a;
+
+    font-size: 9px;
+
+    cursor: pointer;
+}
+
+/* =========================================
+   PERFORMANCE
+========================================= */
+
+.performance-card {
+    min-height: 355px;
+    padding: 20px;
+}
+
+.period-select {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    background: rgba(255, 255, 255, 0.025);
+
+    color: #73847d;
+
+    padding: 7px 10px;
+
+    border-radius: 7px;
+
+    font-size: 9px;
+
+    outline: none;
+}
+
+.chart-value {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+
+    margin-top: 24px;
+}
+
+.chart-value strong {
+    font-size: 30px;
+    font-weight: 600;
+    color: #edf6f1;
+}
+
+.chart-value span {
+    font-size: 10px;
+    color: #5cdd9a;
+}
+
+.chart {
+    height: 175px;
+
+    margin-top: 20px;
+
+    display: flex;
+    align-items: flex-end;
+
+    gap: 8px;
+
+    padding: 0 5px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.06);
+}
+
+.bar-wrapper {
+    flex: 1;
+    height: 100%;
+
+    display: flex;
+    align-items: flex-end;
+}
+
+.chart-bar {
+    width: 100%;
+
+    min-height: 8px;
+
+    border-radius:
+        5px 5px 2px 2px;
+
+    background:
+        linear-gradient(180deg,
+            #65e6a4,
+            rgba(50, 210, 140, 0.2));
+
+    box-shadow:
+        0 0 18px rgba(70, 230, 150, 0.08);
+}
+
+.chart-labels {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 10px;
+
+    color: #455650;
+
+    font-size: 8px;
+}
+
+/* =========================================
+   UPCOMING POSTS
+========================================= */
+
+.upcoming-card {
+    min-height: 355px;
+    padding: 20px;
+}
+
+.posts-list {
+    margin-top: 18px;
+}
+
+.upcoming-post {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 13px 0;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.045);
+}
+
+.post-platform-icon {
+    width: 30px;
+    height: 30px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    color: #9ba9a4;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+}
+
+.post-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.post-info h4 {
+    margin: 0;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    color: #cbd5d1;
+}
+
+.post-info p {
+    margin: 4px 0 0;
+
+    font-size: 8px;
+
+    color: #53645e;
+}
+
+.post-time {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #566760;
+
+    font-size: 8px;
+}
+
+.schedule-button {
+    width: 100%;
+
+    height: 34px;
+
+    margin-top: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    border-radius: 8px;
+
+    border:
+        1px solid rgba(75, 220, 150, 0.16);
+
+    background:
+        rgba(55, 220, 145, 0.05);
+
+    color: #5cda99;
+
+    font-size: 9px;
+
+    cursor: pointer;
+}
+
+/* =========================================
+   ACCOUNTS
+========================================= */
+
+.accounts-card {
+    min-height: 355px;
+    padding: 20px;
+}
+
+.connect-button {
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+
+    padding: 7px 10px;
+
+    border-radius: 7px;
+
+    border:
+        1px solid rgba(75, 220, 150, 0.18);
+
+    background:
+        rgba(65, 220, 150, 0.05);
+
+    color: #60d99c;
+
+    font-size: 9px;
+
+    cursor: pointer;
+}
+
+.accounts-list {
+    margin-top: 18px;
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 13px 0;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.045);
+}
+
+.account-icon {
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    color: #b9c7c2;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+}
+
+.account-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.account-info h4 {
+    margin: 0;
+
+    font-size: 10px;
+
+    color: #d5dedb;
+}
+
+.account-info p {
+    margin: 3px 0;
+
+    font-size: 8px;
+
+    color: #5a6b65;
+}
+
+.account-info span {
+    font-size: 7px;
+
+    color: #3f514a;
+}
+
+.connected-icon {
+    color: #4ed990;
+}
+
+/* =========================================
+   QUICK ACTIONS
+========================================= */
+
+.quick-card {
+    min-height: 355px;
+    padding: 20px;
+}
+
+.quick-actions {
+    margin-top: 18px;
+}
+
+.quick-action {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 13px 0;
+
+    background: none;
+
+    border: none;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.045);
+
+    color: white;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.quick-icon {
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    color: #55d997;
+
+    background:
+        rgba(55, 220, 145, 0.07);
+}
+
+.quick-action>div:nth-child(2) {
+    flex: 1;
+}
+
+.quick-action strong {
+    display: block;
+
+    font-size: 9px;
+    font-weight: 500;
+
+    color: #cbd5d1;
+}
+
+.quick-action span {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 7px;
+
+    color: #53645e;
+}
+
+.quick-action .arrow {
+    font-size: 13px;
+
+    color: #53645e;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1400px) {
+    .dashboard-page {
+        padding: 35px 30px 50px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns:
+            minmax(0, 1.4fr) minmax(260px, 1fr) minmax(220px, 0.8fr);
+    }
+
+    .quick-card {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 1100px) {
+    .dashboard-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .performance-card {
+        grid-column: span 2;
+    }
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .dashboard-page {
+        padding: 25px 16px 40px;
+    }
+
+    .dashboard-welcome {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .performance-card {
+        grid-column: span 1;
+    }
+
+    .dashboard-welcome h1 {
+        font-size: 34px;
+    }
+}

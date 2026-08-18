@@ -1,0 +1,868 @@
+/* =========================================
+   PAGE
+========================================= */
+
+.create-page {
+    position: relative;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 72% 45%,
+            rgba(28, 92, 67, 0.16),
+            transparent 30%),
+        #050a09;
+
+    color: #f5f8f7;
+
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.create-grid {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.018) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.018) 1px,
+            transparent 1px);
+
+    background-size: 60px 60px;
+
+    mask-image:
+        linear-gradient(to bottom,
+            black,
+            transparent 90%);
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   GLOW
+========================================= */
+
+.create-glow {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    pointer-events: none;
+}
+
+.create-glow-one {
+    width: 420px;
+    height: 420px;
+
+    right: 5%;
+    top: 20%;
+
+    background: rgba(72, 255, 174, 0.1);
+}
+
+.create-glow-two {
+    width: 300px;
+    height: 300px;
+
+    left: 10%;
+    bottom: -100px;
+
+    background: rgba(72, 255, 174, 0.06);
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+.create-particle {
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #65dda1;
+
+    box-shadow:
+        0 0 15px rgba(101, 221, 161, 0.8);
+}
+
+.create-particle-one {
+    top: 22%;
+    left: 47%;
+}
+
+.create-particle-two {
+    top: 62%;
+    right: 10%;
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.create-navbar {
+    position: relative;
+    z-index: 20;
+
+    height: 84px;
+
+    padding: 0 8%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.create-logo {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    text-decoration: none;
+}
+
+.create-logo>span:last-child span {
+    font-weight: 500;
+}
+
+.create-logo-box {
+    width: 29px;
+    height: 29px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #65dda1;
+
+    color: #07100c;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.create-back-home {
+    color: #9ba8a4;
+
+    font-size: 13px;
+
+    text-decoration: none;
+
+    transition: 0.2s ease;
+}
+
+.create-back-home:hover {
+    color: #65dda1;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.create-container {
+    position: relative;
+    z-index: 5;
+
+    width: min(1120px, 90%);
+
+    min-height: calc(100vh - 160px);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 460px;
+
+    align-items: center;
+
+    gap: 90px;
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+.create-intro {
+    max-width: 520px;
+}
+
+.create-badge {
+    width: fit-content;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 25px;
+
+    padding: 8px 13px;
+
+    border: 1px solid rgba(72, 255, 174, 0.18);
+
+    border-radius: 8px;
+
+    background: rgba(72, 255, 174, 0.04);
+
+    color: #65dda1;
+
+    font-size: 11px;
+}
+
+.create-badge span {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #65dda1;
+
+    box-shadow:
+        0 0 10px rgba(101, 221, 161, 0.8);
+}
+
+.create-intro h1 {
+    margin: 0;
+
+    font-size: clamp(46px, 5vw, 72px);
+
+    line-height: 0.98;
+
+    letter-spacing: -3px;
+
+    font-weight: 500;
+}
+
+.create-intro h1 span {
+    color: #65dda1;
+
+    text-shadow:
+        0 0 40px rgba(101, 221, 161, 0.12);
+}
+
+.create-intro>p {
+    max-width: 490px;
+
+    margin-top: 28px;
+
+    color: #8e9c97;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   BENEFITS
+========================================= */
+
+.create-benefits {
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+
+    margin-top: 35px;
+}
+
+.create-benefit {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.benefit-icon {
+    width: 27px;
+    height: 27px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: rgba(72, 255, 174, 0.08);
+
+    border: 1px solid rgba(72, 255, 174, 0.14);
+
+    color: #65dda1;
+
+    font-size: 12px;
+}
+
+.create-benefit div:last-child {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.create-benefit strong {
+    color: #dce4e1;
+
+    font-size: 12px;
+}
+
+.create-benefit span {
+    color: #65736e;
+
+    font-size: 10px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.create-card {
+    position: relative;
+
+    padding: 1px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.14),
+            rgba(255, 255, 255, 0.035));
+
+    box-shadow:
+        0 35px 100px rgba(0, 0, 0, 0.45),
+        0 0 70px rgba(72, 255, 174, 0.07);
+}
+
+.create-card-content {
+    position: relative;
+
+    padding: 34px 36px;
+
+    border-radius: 23px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(17, 29, 26, 0.98),
+            rgba(7, 14, 13, 0.98));
+
+    backdrop-filter: blur(25px);
+}
+
+
+/* =========================================
+   CARD HEADER
+========================================= */
+
+.create-card-header {
+    text-align: center;
+}
+
+.create-user-icon {
+    width: 45px;
+    height: 45px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: rgba(101, 221, 161, 0.08);
+
+    border: 1px solid rgba(101, 221, 161, 0.16);
+
+    color: #65dda1;
+
+    font-size: 22px;
+
+    box-shadow:
+        0 0 25px rgba(72, 255, 174, 0.08);
+}
+
+.create-card-header h2 {
+    margin: 0;
+
+    font-size: 24px;
+
+    letter-spacing: -0.6px;
+
+    font-weight: 600;
+}
+
+.create-card-header p {
+    margin: 8px 0 0;
+
+    color: #697772;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.create-form {
+    margin-top: 27px;
+}
+
+.create-field {
+    margin-bottom: 15px;
+}
+
+.create-field label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #c4cfcb;
+
+    font-size: 11px;
+
+    font-weight: 500;
+}
+
+.create-input-wrapper {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+}
+
+.create-input-icon {
+    position: absolute;
+
+    left: 14px;
+
+    color: #5c6c67;
+
+    font-size: 11px;
+
+    pointer-events: none;
+}
+
+.create-input-wrapper input {
+    width: 100%;
+
+    height: 44px;
+
+    padding: 0 14px 0 38px;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    color: #f2f7f5;
+
+    font-size: 11px;
+
+    transition: 0.25s ease;
+}
+
+.create-input-wrapper input::placeholder {
+    color: #4e5c58;
+}
+
+.create-input-wrapper input:focus {
+    border-color: rgba(101, 221, 161, 0.55);
+
+    background: rgba(101, 221, 161, 0.025);
+
+    box-shadow:
+        0 0 0 3px rgba(101, 221, 161, 0.06);
+}
+
+
+/* =========================================
+   PASSWORD TOGGLE
+========================================= */
+
+.create-password-toggle {
+    position: absolute;
+
+    right: 12px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #65dda1;
+
+    font-size: 9px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   TERMS
+========================================= */
+
+.create-terms {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 8px;
+
+    margin: 4px 0 18px;
+
+    color: #65736e;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+
+    cursor: pointer;
+}
+
+.create-terms input {
+    margin-top: 2px;
+
+    flex-shrink: 0;
+
+    accent-color: #65dda1;
+}
+
+.create-terms a {
+    color: #65dda1;
+
+    text-decoration: none;
+}
+
+
+/* =========================================
+   SUBMIT
+========================================= */
+
+.create-submit {
+    width: 100%;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 17px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #65dda1;
+
+    color: #06100b;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(72, 255, 174, 0.12);
+
+    transition: 0.25s ease;
+}
+
+.create-submit:hover {
+    background: #7ae9af;
+
+    box-shadow:
+        0 15px 40px rgba(72, 255, 174, 0.2);
+}
+
+.create-arrow {
+    font-size: 19px;
+}
+
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.create-divider {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 22px 0;
+}
+
+.create-divider span {
+    flex: 1;
+
+    height: 1px;
+
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.create-divider p {
+    margin: 0;
+
+    color: #4d5a56;
+
+    font-size: 9px;
+}
+
+
+/* =========================================
+   GOOGLE
+========================================= */
+
+.create-google {
+    width: 100%;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    color: #c5cecb;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.create-google:hover {
+    background: rgba(255, 255, 255, 0.05);
+
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.create-google span {
+    font-size: 15px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================
+   LOGIN LINK
+========================================= */
+
+.already-account {
+    margin: 20px 0 0;
+
+    text-align: center;
+
+    color: #65736e;
+
+    font-size: 10px;
+}
+
+.already-account a {
+    margin-left: 5px;
+
+    color: #65dda1;
+
+    text-decoration: none;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.create-footer {
+    position: relative;
+
+    z-index: 10;
+
+    width: min(1120px, 90%);
+
+    margin: 0 auto;
+
+    padding: 20px 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    color: #4d5b56;
+
+    font-size: 9px;
+}
+
+.create-footer div {
+    display: flex;
+
+    gap: 18px;
+}
+
+.create-footer a {
+    color: #65736e;
+
+    text-decoration: none;
+}
+
+.create-footer a:hover {
+    color: #65dda1;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 950px) {
+    .create-container {
+        grid-template-columns: 1fr;
+
+        max-width: 520px;
+
+        padding: 50px 0;
+
+        gap: 50px;
+    }
+
+    .create-intro {
+        margin: 0 auto;
+
+        text-align: center;
+    }
+
+    .create-badge {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .create-intro>p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .create-benefits {
+        max-width: 350px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        text-align: left;
+    }
+
+    .create-footer {
+        display: none;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .create-navbar {
+        height: 70px;
+
+        padding: 0 20px;
+    }
+
+    .create-logo {
+        font-size: 14px;
+    }
+
+    .create-back-home {
+        font-size: 11px;
+    }
+
+    .create-container {
+        width: calc(100% - 30px);
+
+        padding: 45px 0 60px;
+
+        gap: 40px;
+    }
+
+    .create-intro h1 {
+        font-size: 45px;
+
+        letter-spacing: -2px;
+    }
+
+    .create-intro>p {
+        font-size: 13px;
+    }
+
+    .create-card-content {
+        padding: 30px 20px;
+    }
+}
+
+
+@media (max-width: 420px) {
+    .create-back-home {
+        display: none;
+    }
+
+    .create-intro h1 {
+        font-size: 39px;
+    }
+
+    .create-container {
+        width: calc(100% - 24px);
+    }
+
+    .create-card-content {
+        padding: 27px 17px;
+    }
+}
