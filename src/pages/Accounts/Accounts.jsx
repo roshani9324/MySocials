@@ -26,7 +26,8 @@ const accounts = [
     username: "Roshani Maurya",
     followers: "4.2K",
     status: "Connected",
-    description: "Manage your Facebook content, posts and audience engagement.",
+    description:
+      "Manage your Facebook content, posts and audience engagement.",
     icon: "f",
     iconStyle: "bg-blue-50 text-blue-600",
   },
@@ -64,13 +65,14 @@ export default function Accounts() {
     const matchesFilter =
       filter === "All" ||
       (filter === "Connected" && account.status === "Connected") ||
-      (filter === "Not connected" && account.status === "Not connected");
+      (filter === "Not connected" &&
+        account.status === "Not connected");
 
     return matchesSearch && matchesFilter;
   });
 
   const connectedCount = accounts.filter(
-    (account) => account.status === "Connected",
+    (account) => account.status === "Connected"
   ).length;
 
   return (
@@ -129,7 +131,9 @@ export default function Accounts() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-slate-500">Total Followers</p>
-              <p className="mt-2 text-2xl font-bold text-slate-900">18.9K</p>
+              <p className="mt-2 text-2xl font-bold text-slate-900">
+                18.9K
+              </p>
             </div>
 
             <div className="rounded-xl bg-violet-50 p-3 text-violet-600">
@@ -210,7 +214,10 @@ export default function Accounts() {
         </div>
       ) : (
         <div className="rounded-2xl border border-slate-200 bg-white p-12 text-center shadow-sm">
-          <Search size={32} className="mx-auto text-slate-300" />
+          <Search
+            size={32}
+            className="mx-auto text-slate-300"
+          />
 
           <h3 className="mt-4 font-semibold text-slate-900">
             No accounts found

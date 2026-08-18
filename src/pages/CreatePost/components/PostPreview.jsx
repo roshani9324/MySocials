@@ -1,103 +1,151 @@
+import { useState } from "react";
 import {
-
-  MoreHorizontal,
   Heart,
   MessageCircle,
   Send,
   Bookmark,
+  MoreHorizontal,
 } from "lucide-react";
-import {
-  FaInstagram,
-  
-} from "react-icons/fa";
+import { FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
+import { motion } from "framer-motion";
+
+const previews = {
+  Instagram: {
+    icon: FaInstagram,
+    username: "@roshani",
+    label: "Instagram",
+  },
+  YouTube: {
+    icon: FaYoutube,
+    username: "Roshani",
+    label: "YouTube",
+  },
+  LinkedIn: {
+    icon: FaLinkedin,
+    username: "Roshani Maurya",
+    label: "LinkedIn",
+  },
+};
 
 export default function PostPreview() {
-  return (
-    <div className="rounded-2xl border border-white/10 bg-[#0a100e]/80 backdrop-blur-xl overflow-hidden">
-      {/* Header */}
-      <div className="px-5 py-4 border-b border-white/10">
-        <p className="text-sm font-semibold">Post Preview</p>
+  const [platform, setPlatform] = useState("Instagram");
 
-        <p className="text-xs text-gray-500 mt-1">
-          Preview how your post will appear.
+  const current = previews[platform];
+  const PlatformIcon = current.icon;
+
+  return (
+    <div
+      className="
+        rounded-2xl
+        border border-white/[0.08]
+        bg-white/[0.025]
+        overflow-hidden
+      "
+    >
+      {/* Header */}
+      <div className="p-5 border-b border-white/[0.06]">
+        <p className="text-[10px] uppercase tracking-[0.2em] text-emerald-400/70">
+          Preview
         </p>
+
+        <div className="flex items-center justify-between mt-1">
+          <h2 className="text-base font-medium">Your post</h2>
+
+          <div className="flex items-center gap-1">
+            {Object.keys(previews).map((item) => {
+              const Icon = previews[item].icon;
+
+              return (
+                <button
+                  key={item}
+                  onClick={() => setPlatform(item)}
+                  className={`
+                    w-8 h-8
+                    rounded-lg
+                    flex items-center justify-center
+                    transition
+                    ${
+                      platform === item
+                        ? "bg-emerald-400/10 text-emerald-400"
+                        : "text-white/25 hover:text-white/60"
+                    }
+                  `}
+                  title={item}
+                >
+                  <Icon size={15} />
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
       {/* Preview */}
       <div className="p-5">
-        <div className="rounded-2xl overflow-hidden border border-white/10 bg-[#080c0b]">
-          {/* Profile */}
-          <div className="flex items-center justify-between p-4">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-300 to-emerald-600 flex items-center justify-center text-black font-semibold">
-                R
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold">Roshani</p>
-
-                <p className="text-[10px] text-gray-500">@roshani</p>
-              </div>
-            </div>
-
-            <MoreHorizontal size={17} className="text-gray-500" />
-          </div>
-
-          {/* Image */}
-          <div
-            className="
-            aspect-square
-            bg-gradient-to-br
-            from-emerald-950
-            via-[#0c211b]
-            to-black
-            relative
+        <motion.div
+          key={platform}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="
+            rounded-2xl
+            border border-white/[0.08]
+            bg-[#090d0b]
             overflow-hidden
           "
-          >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div
-                className="
-                w-36
-                h-36
-                rounded-full
-                bg-emerald-400/10
-                blur-2xl
-              "
-              />
-
-              <div
-                className="
-                absolute
-                w-24
-                h-24
-                rounded-3xl
-                border
-                border-emerald-400/20
-                rotate-12
-              "
-              />
-
-              <FaInstagram size={48} className="text-emerald-300 relative" />
-            </div>
-
+        >
+          {/* Account */}
+          <div className="flex items-center gap-3 p-4">
             <div
               className="
-              absolute
-              inset-x-5
-              bottom-5
-              p-4
-              rounded-xl
-              bg-black/40
-              backdrop-blur-md
-              border border-white/10
-            "
+                w-9 h-9
+                rounded-full
+                bg-emerald-400/10
+                border border-emerald-400/20
+                flex items-center justify-center
+                text-emerald-400
+              "
             >
-              <p className="text-sm font-semibold">
-                Something special is coming.
+              <PlatformIcon size={17} />
+            </div>
+
+            <div className="flex-1">
+              <p className="text-xs font-medium text-white/80">
+                {current.username}
               </p>
 
-              <p className="text-xs text-gray-400 mt-1">Stay tuned 🚀</p>
+              <p className="text-[9px] text-white/25">{current.label}</p>
+            </div>
+
+            <MoreHorizontal size={17} className="text-white/30" />
+          </div>
+
+          {/* Media */}
+          <div
+            className="
+              aspect-square
+              bg-gradient-to-br
+              from-emerald-400/[0.15]
+              via-white/[0.03]
+              to-black
+              flex items-center justify-center
+            "
+          >
+            <div className="text-center">
+              <div
+                className="
+                  w-14 h-14
+                  rounded-2xl
+                  bg-emerald-400/10
+                  border border-emerald-400/10
+                  flex items-center justify-center
+                  mx-auto
+                  text-emerald-400/50
+                "
+              >
+                <PlatformIcon size={25} />
+              </div>
+
+              <p className="text-[10px] text-white/20 mt-3">Media preview</p>
             </div>
           </div>
 
@@ -105,37 +153,34 @@ export default function PostPreview() {
           <div className="p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <Heart size={19} />
-
-                <MessageCircle size={19} />
-
-                <Send size={19} />
+                <Heart size={18} className="text-white/60" />
+                <MessageCircle size={18} className="text-white/60" />
+                <Send size={18} className="text-white/60" />
               </div>
 
-              <Bookmark size={19} />
+              <Bookmark size={18} className="text-white/60" />
             </div>
 
-            <p className="text-xs font-semibold mt-4">248 likes</p>
-
-            <p className="text-xs text-gray-300 mt-2 leading-5">
-              Excited to share what's coming next! 🚀
+            <p className="text-[10px] font-medium text-white/50 mt-3">
+              0 likes
             </p>
 
-            <p className="text-[10px] text-gray-600 mt-3">Just now</p>
+            <p className="text-[11px] text-white/60 mt-2 leading-5">
+              Your caption will appear here...
+            </p>
+
+            <p className="text-[9px] text-white/20 mt-2">Just now</p>
           </div>
-        </div>
+        </motion.div>
+      </div>
 
-        {/* Preview Platforms */}
-        <div className="mt-5">
-          <p className="text-xs text-gray-500 mb-3">Previewing for</p>
-
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center">
-              <FaInstagram size={16} className="text-emerald-400" />
-            </div>
-
-            <span className="text-xs text-gray-400">Instagram</span>
-          </div>
+      {/* Preview Info */}
+      <div className="px-5 pb-5">
+        <div className="rounded-xl bg-white/[0.025] border border-white/[0.05] p-3">
+          <p className="text-[10px] text-white/30 leading-4">
+            This is a preview of how your content may appear on{" "}
+            <span className="text-emerald-400/70">{current.label}</span>.
+          </p>
         </div>
       </div>
     </div>

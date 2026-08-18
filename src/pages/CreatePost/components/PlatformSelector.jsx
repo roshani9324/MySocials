@@ -1,125 +1,136 @@
 import { useState } from "react";
-import {
-  FaInstagram,
-  FaYoutube,
-  FaLinkedin,
-  FaFacebookF,
- 
-} from "react-icons/fa";
-import { AtSign, Check } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
+import { FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
+
 const platforms = [
   {
-    id: "instagram",
     name: "Instagram",
+    username: "@roshani",
     icon: FaInstagram,
   },
   {
-    id: "youtube",
     name: "YouTube",
+    username: "@roshani",
     icon: FaYoutube,
   },
   {
-    id: "linkedin",
     name: "LinkedIn",
+    username: "Roshani Maurya",
     icon: FaLinkedin,
-  },
-  {
-    id: "facebook",
-    name: "Facebook",
-    icon: FaFacebookF,
-  },
-  {
-    id: "threads",
-    name: "Threads",
-    icon: AtSign,
   },
 ];
 
 export default function PlatformSelector() {
-  const [selected, setSelected] = useState([
-    "instagram",
-    "linkedin",
-  ]);
+  const [selected, setSelected] = useState(["Instagram"]);
 
-  const togglePlatform = (id) => {
+  const togglePlatform = (name) => {
     setSelected((prev) =>
-      prev.includes(id)
-        ? prev.filter((item) => item !== id)
-        : [...prev, id]
+      prev.includes(name)
+        ? prev.filter((item) => item !== name)
+        : [...prev, name],
     );
   };
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#0a100e]/80 backdrop-blur-xl p-5">
-
+    <div className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5">
+      {/* Header */}
       <div className="flex items-center justify-between mb-5">
         <div>
-          <p className="text-sm font-semibold text-white">
-            Publish to
+          <p className="text-[10px] uppercase tracking-[0.2em] text-emerald-400/70">
+            Platforms
           </p>
 
-          <p className="text-xs text-gray-500 mt-1">
-            Select the social channels for this post.
-          </p>
+          <h2 className="text-base font-medium text-white mt-1">Publish to</h2>
         </div>
 
-        <span className="text-xs text-emerald-400">
-          {selected.length} selected
-        </span>
+        <button className="flex items-center gap-1 text-[11px] text-white/30 hover:text-white/60 transition">
+          Select all
+          <ChevronDown size={13} />
+        </button>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+      {/* Platforms */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         {platforms.map((platform) => {
           const Icon = platform.icon;
-          const isSelected = selected.includes(platform.id);
+          const isSelected = selected.includes(platform.name);
 
           return (
             <button
-              key={platform.id}
-              onClick={() => togglePlatform(platform.id)}
+              key={platform.name}
+              type="button"
+              onClick={() => togglePlatform(platform.name)}
               className={`
                 relative
-                flex flex-col
-                items-center
-                justify-center
-                gap-2
-                h-24
+                flex items-center gap-3
                 rounded-xl
                 border
+                p-3
+                text-left
                 transition-all
                 ${
                   isSelected
-                    ? "border-emerald-400/50 bg-emerald-400/[0.08] text-emerald-300"
-                    : "border-white/10 bg-white/[0.02] text-gray-500 hover:text-gray-300 hover:bg-white/[0.05]"
+                    ? "border-emerald-400/30 bg-emerald-400/[0.07]"
+                    : "border-white/[0.07] bg-white/[0.015] hover:bg-white/[0.04]"
                 }
               `}
             >
-              {isSelected && (
-                <span className="absolute top-2 right-2 w-4 h-4 rounded-full bg-emerald-400 text-black flex items-center justify-center">
-                  <Check size={10} />
-                </span>
-              )}
-
+              {/* Icon */}
               <div
                 className={`
-                  w-9 h-9 rounded-lg flex items-center justify-center
+                  w-10 h-10
+                  shrink-0
+                  rounded-xl
+                  flex items-center justify-center
                   ${
                     isSelected
-                      ? "bg-emerald-400/15"
-                      : "bg-white/[0.04]"
+                      ? "bg-emerald-400/10 text-emerald-400"
+                      : "bg-white/[0.04] text-white/40"
                   }
                 `}
               >
                 <Icon size={19} />
               </div>
 
-              <span className="text-xs">
-                {platform.name}
-              </span>
+              {/* Text */}
+              <div className="min-w-0">
+                <p className="text-xs font-medium text-white/80">
+                  {platform.name}
+                </p>
+
+                <p className="text-[10px] text-white/30 mt-1 truncate">
+                  {platform.username}
+                </p>
+              </div>
+
+              {/* Check */}
+              <div
+                className={`
+                  absolute
+                  top-3
+                  right-3
+                  w-4
+                  h-4
+                  rounded-full
+                  flex items-center justify-center
+                  ${
+                    isSelected
+                      ? "bg-emerald-400 text-black"
+                      : "border border-white/10"
+                  }
+                `}
+              >
+                {isSelected && <Check size={10} strokeWidth={3} />}
+              </div>
             </button>
           );
         })}
       </div>
+
+      {/* Info */}
+      <p className="text-[10px] text-white/20 mt-4">
+        Select one or more platforms to publish your content.
+      </p>
     </div>
   );
 }
