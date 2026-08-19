@@ -69,7 +69,7 @@ export default function Settings() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] p-4 md:p-6 lg:p-8">
+    <div className="min-h-screen w-full bg-[#f8fafc] p-4 md:p-6 lg:p-8">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-slate-900 md:text-3xl">

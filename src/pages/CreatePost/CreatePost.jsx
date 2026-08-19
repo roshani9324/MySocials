@@ -8,7 +8,7 @@ import SchedulePicker from "./components/SchedulePicker";
 
 export default function CreatePost() {
   return (
-    <div className="min-h-screen bg-[#050908] text-white px-4 sm:px-6 lg:px-8 py-6">
+    <div className="min-h-screen w-full bg-[#050908] text-white px-4 sm:px-6 lg:px-8 py-6 ">
       {/* Background */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-200px] right-[-150px] w-[500px] h-[500px] rounded-full bg-emerald-400/[0.06] blur-[140px]" />

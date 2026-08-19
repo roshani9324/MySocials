@@ -1727,7 +1727,6 @@ input {
 .app-shell {
   width: 100%;
   min-height: 100vh;
-  display: flex;
   background:
     radial-gradient(circle at 75% 20%, rgba(30, 110, 75, 0.08), transparent 35%),
     #050b09;
@@ -2877,11 +2876,24 @@ input {
    MAIN AREA
 ========================================= */
 
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background:
+    radial-gradient(circle at 80% 10%,
+      rgba(50, 190, 120, 0.08),
+      transparent 30%),
+    radial-gradient(circle at 20% 80%,
+      rgba(30, 130, 80, 0.05),
+      transparent 30%),
+    #050907;
+}
+
 .dashboard-area {
   width: calc(100% - 235px);
-
+  min-width: 0;
   margin-left: 235px;
-
   background: transparent;
 
   transition:

@@ -5,7 +5,7 @@ export default function Privacy() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] px-4 py-8 md:px-8">
+    <div className="min-h-screen w-full bg-[#f8fafc] px-4 py-8 md:px-8">
       <div className="mx-auto max-w-4xl">
         {/* Back */}
         <button

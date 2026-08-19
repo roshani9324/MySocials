@@ -25,7 +25,7 @@ export default function Calendar() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] p-4 md:p-6 lg:p-8">
+    <div className="min-h-screen w-full bg-[#f8fafc] p-4 md:p-6 lg:p-8">
       <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
         <CalendarHeader
           currentDate={currentDate}

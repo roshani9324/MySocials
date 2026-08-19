@@ -96,7 +96,7 @@ const accounts = [
 
 export default function Dashboard() {
   return (
-    <div className="min-h-screen bg-[#050908] text-white overflow-x-hidden">
+    <div className="min-h-screen w-full bg-[#050908] text-white overflow-x-hidden">
       {/* Background */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-0 left-[35%] w-[500px] h-[400px] bg-emerald-400/[0.04] blur-[140px]" />
@@ -114,7 +114,7 @@ export default function Dashboard() {
       </div>
 
       {/* Main */}
-      <main className="relative z-10 p-6 lg:p-8">
+      <main className="relative z-10 w-full px-6 py-6 lg:px-8 lg:py-8">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-8">
           <div>
@@ -171,7 +171,7 @@ export default function Dashboard() {
         <StatsCards stats={stats} />
 
         {/* Main Grid */}
-        <div className="grid grid-cols-1 xl:grid-cols-[1.5fr_1fr_280px] gap-5 mt-5">
+        <div className="grid w-full grid-cols-1 xl:grid-cols-[minmax(0,1.5fr)_minmax(280px,1fr)_minmax(240px,0.85fr)] gap-5 mt-5">
           {/* Upcoming */}
           <UpcomingPosts posts={upcomingPosts} />
 
@@ -183,7 +183,7 @@ export default function Dashboard() {
         </div>
 
         {/* Bottom Analytics */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-5">
+        <div className="grid w-full grid-cols-1 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] gap-5 mt-5">
           <PerformanceChart />
 
           <RecentActivity />

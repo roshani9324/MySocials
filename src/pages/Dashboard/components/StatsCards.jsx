@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function StatsCards({ stats }) {
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid w-full grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
       {stats.map((stat, index) => {
         const Icon = stat.icon;
 
