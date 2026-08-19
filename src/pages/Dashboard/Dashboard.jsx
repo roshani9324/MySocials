@@ -18,6 +18,8 @@ import StatsCards from "./components/StatsCards";
 import UpcomingPosts from "./components/UpcomingPosts";
 import ConnectedAccounts from "./components/ConnectedAccounts";
 
+import "./Dashboard.css";
+
 const stats = [
   {
     title: "Total Reach",
@@ -95,106 +97,86 @@ const accounts = [
 
 export default function Dashboard() {
   return (
-    <div className="min-h-screen w-full bg-[#050908] text-white overflow-x-hidden">
-      {/* Background */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 left-[35%] w-[500px] h-[400px] bg-emerald-400/[0.04] blur-[140px]" />
+    <div className="dashboard-page">
+      {/* BACKGROUND */}
+      <div className="dashboard-background">
+        <div className="dashboard-glow dashboard-glow-one" />
+        <div className="dashboard-glow dashboard-glow-two" />
 
-        <div
-          className="absolute inset-0 opacity-[0.025]"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)
-            `,
-            backgroundSize: "40px 40px",
-          }}
-        />
+        <div className="dashboard-grid-pattern" />
       </div>
 
-      {/* Main */}
-      <main className="relative z-10 w-full px-6 py-6 lg:px-8 lg:py-8">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-8">
-          <div>
-            <p className="text-[11px] uppercase tracking-[0.25em] text-emerald-400/70 mb-3">
-              Monday, August 17
-            </p>
+      <main className="dashboard-container">
+        {/* =================================================
+            HEADER
+        ================================================= */}
 
-            <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
-              Good morning, <span className="text-emerald-400">Roshani</span>
+        <header className="dashboard-header">
+          <div className="dashboard-welcome">
+            <p className="dashboard-date">Monday, August 17</p>
+
+            <h1>
+              Good morning, <span>Roshani</span>
             </h1>
 
-            <p className="text-sm text-white/40 mt-2">
+            <p className="dashboard-description">
               Here's what's happening across your social channels.
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
-            <button
-              className="
-                flex items-center gap-2
-                px-4 py-2.5
-                rounded-xl
-                border border-white/10
-                bg-white/[0.03]
-                text-sm text-white/70
-                hover:bg-white/[0.06]
-                transition
-              "
-            >
-              Last 30 days
-            </button>
+          <div className="dashboard-header-actions">
+            <select className="dashboard-date-filter" defaultValue="30">
+              <option value="7">Last 7 days</option>
 
-            <button
-              className="
-                flex items-center gap-2
-                px-5 py-2.5
-                rounded-xl
-                bg-emerald-400
-                text-black
-                font-semibold
-                text-sm
-                hover:bg-emerald-300
-                transition
-                shadow-[0_0_25px_rgba(72,255,174,0.15)]
-              "
-            >
+              <option value="30">Last 30 days</option>
+
+              <option value="90">Last 90 days</option>
+            </select>
+
+            <button className="dashboard-create-button">
               <Plus size={17} />
               Create Post
             </button>
           </div>
-        </div>
+        </header>
 
-        {/* Stats */}
-        <StatsCards stats={stats} />
+        {/* =================================================
+            STATS
+        ================================================= */}
 
-        {/* Main Grid */}
-        <div className="grid w-full grid-cols-1 xl:grid-cols-[minmax(0,1.5fr)_minmax(280px,1fr)_minmax(240px,0.85fr)] gap-5 mt-5">
-          {/* Upcoming */}
+        <section className="dashboard-stats-section">
+          <StatsCards stats={stats} />
+        </section>
+
+        {/* =================================================
+            MAIN CONTENT
+        ================================================= */}
+
+        <section className="dashboard-main-grid">
           <UpcomingPosts posts={upcomingPosts} />
 
-          {/* Accounts */}
           <ConnectedAccounts accounts={accounts} />
 
-          {/* Quick Actions */}
           <QuickActions />
-        </div>
+        </section>
 
-        {/* Bottom Analytics */}
-        <div className="grid w-full grid-cols-1 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] gap-5 mt-5">
+        {/* =================================================
+            BOTTOM CONTENT
+        ================================================= */}
+
+        <section className="dashboard-bottom-grid">
           <PerformanceChart />
 
           <RecentActivity />
-        </div>
+        </section>
       </main>
     </div>
   );
 }
 
-/* -------------------------------- */
-/* QUICK ACTIONS */
-/* -------------------------------- */
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
 
 function QuickActions() {
   const actions = [
@@ -219,75 +201,33 @@ function QuickActions() {
     <motion.div
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      className="
-        rounded-2xl
-        border border-white/[0.08]
-        bg-white/[0.025]
-        p-5
-      "
+      className="dashboard-card quick-actions-card"
     >
-      <div className="mb-5">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-white/30">
-          Quick Actions
-        </p>
+      <div className="dashboard-card-header">
+        <div>
+          <p className="dashboard-eyebrow">QUICK ACTIONS</p>
 
-        <h2 className="text-base font-medium mt-2">
-          What would you like to do?
-        </h2>
+          <h2>What would you like to do?</h2>
+        </div>
       </div>
 
-      <div className="space-y-2">
+      <div className="quick-actions-list">
         {actions.map((action) => {
           const Icon = action.icon;
 
           return (
-            <button
-              key={action.title}
-              className="
-                group
-                w-full
-                flex items-center gap-3
-                p-3
-                rounded-xl
-                border border-transparent
-                hover:border-emerald-400/20
-                hover:bg-emerald-400/[0.04]
-                text-left
-                transition
-              "
-            >
-              <div
-                className="
-                  w-9 h-9
-                  shrink-0
-                  rounded-lg
-                  bg-emerald-400/10
-                  border border-emerald-400/10
-                  flex items-center justify-center
-                  text-emerald-400
-                "
-              >
+            <button key={action.title} className="quick-action">
+              <div className="quick-action-icon">
                 <Icon size={17} />
               </div>
 
-              <div className="flex-1 min-w-0">
-                <p className="text-xs font-medium text-white/80">
-                  {action.title}
-                </p>
+              <div className="quick-action-content">
+                <p>{action.title}</p>
 
-                <p className="text-[10px] text-white/30 mt-1">
-                  {action.description}
-                </p>
+                <span>{action.description}</span>
               </div>
 
-              <ArrowUpRight
-                size={14}
-                className="
-                  text-white/20
-                  group-hover:text-emerald-400
-                  transition
-                "
-              />
+              <ArrowUpRight size={15} className="quick-action-arrow" />
             </button>
           );
         })}
@@ -296,9 +236,9 @@ function QuickActions() {
   );
 }
 
-/* -------------------------------- */
-/* PERFORMANCE CHART */
-/* -------------------------------- */
+/* =========================================================
+   PERFORMANCE CHART
+========================================================= */
 
 function PerformanceChart() {
   const bars = [38, 48, 42, 65, 55, 72, 62, 82, 70, 90, 78, 96];
@@ -308,59 +248,71 @@ function PerformanceChart() {
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.1 }}
-      className="
-        rounded-2xl
-        border border-white/[0.08]
-        bg-white/[0.025]
-        p-5
-      "
+      className="dashboard-card performance-card"
     >
-      <div className="flex items-center justify-between mb-6">
+      <div className="performance-header">
         <div>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-white/30">
-            Performance
-          </p>
+          <p className="dashboard-eyebrow">PERFORMANCE</p>
 
-          <h2 className="text-lg font-medium mt-2">Audience growth</h2>
+          <h2>Audience growth</h2>
+
+          <p className="performance-description">
+            Your audience growth over the selected period.
+          </p>
         </div>
 
-        <button className="text-[11px] text-emerald-400">View all</button>
+        <button className="dashboard-view-all">
+          View all
+          <ArrowUpRight size={13} />
+        </button>
       </div>
 
-      <div className="h-52 flex items-end gap-2">
-        {bars.map((height, index) => (
-          <motion.div
-            key={index}
-            initial={{ height: 0 }}
-            animate={{ height: `${height}%` }}
-            transition={{
-              duration: 0.8,
-              delay: index * 0.05,
-            }}
-            className="
-              flex-1
-              rounded-t-md
-              bg-emerald-400/30
-              hover:bg-emerald-400/60
-              transition
-            "
-          />
-        ))}
+      <div className="performance-value">
+        <strong>18.9K</strong>
+
+        <span>+8.4%</span>
       </div>
 
-      <div className="flex justify-between mt-3 text-[9px] text-white/20">
+      <div className="performance-chart">
+        <div className="performance-grid-lines">
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
+
+        <div className="performance-bars">
+          {bars.map((height, index) => (
+            <motion.div
+              key={index}
+              className="performance-bar"
+              initial={{ height: 0 }}
+              animate={{ height: `${height}%` }}
+              transition={{
+                duration: 0.75,
+                delay: index * 0.04,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="performance-labels">
         <span>Aug 1</span>
+
         <span>Aug 7</span>
+
         <span>Aug 14</span>
+
         <span>Today</span>
       </div>
     </motion.div>
   );
 }
 
-/* -------------------------------- */
-/* RECENT ACTIVITY */
-/* -------------------------------- */
+/* =========================================================
+   RECENT ACTIVITY
+========================================================= */
 
 function RecentActivity() {
   return (
@@ -368,26 +320,21 @@ function RecentActivity() {
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.15 }}
-      className="
-        rounded-2xl
-        border border-white/[0.08]
-        bg-white/[0.025]
-        p-5
-      "
+      className="dashboard-card activity-card"
     >
-      <div className="flex justify-between items-center mb-5">
+      <div className="activity-header">
         <div>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-white/30">
-            Activity
-          </p>
+          <p className="dashboard-eyebrow">ACTIVITY</p>
 
-          <h2 className="text-lg font-medium mt-2">Recent activity</h2>
+          <h2>Recent activity</h2>
         </div>
 
-        <MoreHorizontal size={18} className="text-white/30" />
+        <button className="activity-menu">
+          <MoreHorizontal size={18} />
+        </button>
       </div>
 
-      <div className="space-y-4">
+      <div className="activity-list">
         <Activity
           title="New post published"
           description="Your Instagram post is now live."
@@ -416,30 +363,23 @@ function RecentActivity() {
   );
 }
 
+/* =========================================================
+   ACTIVITY ITEM
+========================================================= */
+
 function Activity({ title, description, time }) {
   return (
-    <div className="flex gap-3">
-      <div
-        className="
-          w-2 h-2
-          mt-2
-          rounded-full
-          bg-emerald-400
-          shadow-[0_0_10px_rgba(72,255,174,0.7)]
-          shrink-0
-        "
-      />
+    <div className="activity-item">
+      <div className="activity-dot" />
 
-      <div className="flex-1">
-        <div className="flex justify-between gap-3">
-          <p className="text-xs font-medium text-white/75">{title}</p>
+      <div className="activity-content">
+        <div className="activity-title-row">
+          <p>{title}</p>
 
-          <span className="text-[9px] text-white/20 whitespace-nowrap">
-            {time}
-          </span>
+          <span>{time}</span>
         </div>
 
-        <p className="text-[10px] text-white/30 mt-1">{description}</p>
+        <small>{description}</small>
       </div>
     </div>
   );

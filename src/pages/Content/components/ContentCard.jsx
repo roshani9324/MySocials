@@ -7,83 +7,127 @@ import {
   Clock3,
 } from "lucide-react";
 
+import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
+
+const platformConfig = {
+  Instagram: {
+    icon: FaInstagram,
+    className: "instagram",
+  },
+
+  Facebook: {
+    icon: FaFacebook,
+    className: "facebook",
+  },
+
+  LinkedIn: {
+    icon: FaLinkedin,
+    className: "linkedin",
+  },
+
+  X: {
+    className: "x-platform",
+  },
+};
+
+const statusClass = {
+  Published: "published",
+  Scheduled: "scheduled",
+  Draft: "draft",
+};
+
 export default function ContentCard({ post }) {
-  const statusStyles = {
-    Published: "bg-emerald-50 text-emerald-600",
-    Scheduled: "bg-blue-50 text-blue-600",
-    Draft: "bg-amber-50 text-amber-600",
-  };
+  const platform = platformConfig[post.platform] || platformConfig.X;
+
+  const PlatformIcon = platform.icon;
 
   return (
-    <div className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
-      {/* Image / Preview */}
-      <div className="relative h-44 overflow-hidden bg-gradient-to-br from-indigo-100 via-purple-50 to-slate-100">
-        <div className="flex h-full items-center justify-center px-6 text-center">
-          <p className="line-clamp-3 text-lg font-semibold text-slate-700">
-            {post.title}
-          </p>
+    <article className={`content-post-card ${platform.className}`}>
+      {/* PREVIEW */}
+      <div className="content-card-preview">
+        <div className="content-preview-decoration">
+          <span />
+          <span />
+          <span />
         </div>
 
-        {/* Status */}
-        <div
-          className={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-semibold ${
-            statusStyles[post.status]
-          }`}
-        >
+        <div className="content-preview-content">
+          {PlatformIcon ? (
+            <div className="content-preview-platform-icon">
+              <PlatformIcon size={25} />
+            </div>
+          ) : (
+            <div className="content-preview-platform-x">X</div>
+          )}
+
+          <p>{post.title}</p>
+        </div>
+
+        {/* STATUS */}
+        <div className={`content-status-badge ${statusClass[post.status]}`}>
+          <span className="content-status-dot" />
           {post.status}
         </div>
 
-        {/* Menu */}
-        <button className="absolute right-3 top-3 rounded-lg bg-white/90 p-2 text-slate-500 shadow-sm backdrop-blur transition hover:bg-white hover:text-slate-900">
+        {/* MENU */}
+        <button className="content-card-menu" aria-label="More options">
           <MoreHorizontal size={17} />
         </button>
       </div>
 
-      {/* Content */}
-      <div className="p-4">
-        <div className="flex items-center justify-between">
-          <span className="rounded-lg bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600">
-            {post.platform}
-          </span>
+      {/* CARD BODY */}
+      <div className="content-card-body">
+        {/* PLATFORM */}
+        <div className="content-card-meta-top">
+          <div className="content-platform">
+            <div className="content-platform-icon">
+              {PlatformIcon ? (
+                <PlatformIcon size={14} />
+              ) : (
+                <span className="x-small-icon">X</span>
+              )}
+            </div>
 
-          <span className="text-xs text-slate-400">{post.type}</span>
+            <span>{post.platform}</span>
+          </div>
+
+          <span className="content-post-type">{post.type}</span>
         </div>
 
-        <p className="mt-3 line-clamp-2 text-sm leading-6 text-slate-600">
-          {post.description}
-        </p>
+        {/* DESCRIPTION */}
+        <p className="content-card-description">{post.description}</p>
 
-        {/* Date */}
-        <div className="mt-4 flex items-center gap-2 text-xs text-slate-400">
+        {/* DATE */}
+        <div className="content-card-date">
           {post.status === "Scheduled" ? (
             <Clock3 size={14} />
           ) : (
             <CalendarDays size={14} />
           )}
 
-          {post.date}
+          <span>{post.date}</span>
         </div>
 
-        {/* Stats */}
+        {/* STATS */}
         {post.status === "Published" && (
-          <div className="mt-4 grid grid-cols-3 gap-2 border-t border-slate-100 pt-4">
-            <div className="flex items-center gap-1 text-xs text-slate-500">
-              <Eye size={13} />
-              {post.reach}
+          <div className="content-card-stats">
+            <div className="content-stat">
+              <Eye size={14} />
+              <span>{post.reach}</span>
             </div>
 
-            <div className="flex items-center gap-1 text-xs text-slate-500">
-              <Heart size={13} />
-              {post.likes}
+            <div className="content-stat">
+              <Heart size={14} />
+              <span>{post.likes}</span>
             </div>
 
-            <div className="flex items-center gap-1 text-xs text-slate-500">
-              <MessageCircle size={13} />
-              {post.comments}
+            <div className="content-stat">
+              <MessageCircle size={14} />
+              <span>{post.comments}</span>
             </div>
           </div>
         )}
       </div>
-    </div>
+    </article>
   );
 }

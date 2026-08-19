@@ -1,11 +1,10 @@
 import { useState } from "react";
-
 import CalendarHeader from "./components/CalendarHeader";
 import CalendarGrid from "./components/CalendarGrid";
+import "./Calendar.css";
 
 export default function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date());
-
   const [view, setView] = useState("Month");
 
   const handlePrevious = () => {
@@ -25,8 +24,8 @@ export default function Calendar() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#f8fafc] p-4 md:p-6 lg:p-8">
-      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <div className="calendar-page">
+      <div className="calendar-shell">
         <CalendarHeader
           currentDate={currentDate}
           onPrevious={handlePrevious}

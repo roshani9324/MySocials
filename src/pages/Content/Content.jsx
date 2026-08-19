@@ -1,9 +1,11 @@
 import { useMemo, useState } from "react";
-import { Plus, FileText } from "lucide-react";
+import { Plus, FileText, Layers3 } from "lucide-react";
 
 import ContentTabs from "./components/ContentTabs";
 import ContentFilters from "./components/ContentFilters";
 import ContentCard from "./components/ContentCard";
+
+import "./Content.css";
 
 const posts = [
   {
@@ -19,6 +21,7 @@ const posts = [
     likes: "3.2K",
     comments: "428",
   },
+
   {
     id: 2,
     title: "5 tips to grow your business online",
@@ -32,6 +35,7 @@ const posts = [
     likes: "2.1K",
     comments: "284",
   },
+
   {
     id: 3,
     title: "Behind the scenes at MySocials",
@@ -45,6 +49,7 @@ const posts = [
     likes: "1.6K",
     comments: "196",
   },
+
   {
     id: 4,
     title: "New feature announcement ✨",
@@ -55,6 +60,7 @@ const posts = [
     status: "Scheduled",
     date: "Aug 20, 2026 • 10:30 AM",
   },
+
   {
     id: 5,
     title: "Weekly industry insights",
@@ -65,6 +71,7 @@ const posts = [
     status: "Scheduled",
     date: "Aug 22, 2026 • 2:00 PM",
   },
+
   {
     id: 6,
     title: "Weekend campaign ideas",
@@ -90,9 +97,11 @@ export default function Content() {
         (activeTab === "scheduled" && post.status === "Scheduled") ||
         (activeTab === "drafts" && post.status === "Draft");
 
+      const searchValue = search.toLowerCase();
+
       const matchesSearch =
-        post.title.toLowerCase().includes(search.toLowerCase()) ||
-        post.description.toLowerCase().includes(search.toLowerCase());
+        post.title.toLowerCase().includes(searchValue) ||
+        post.description.toLowerCase().includes(searchValue);
 
       const matchesPlatform = platform === "All" || post.platform === platform;
 
@@ -101,66 +110,69 @@ export default function Content() {
   }, [activeTab, search, platform]);
 
   return (
-    <div className="min-h-screen w-full bg-[#f8fafc] p-4 md:p-6 lg:p-8">
-      {/* Header */}
-      <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-center">
-        <div>
-          <h1 className="text-2xl font-bold text-slate-900 md:text-3xl">
-            Content
-          </h1>
+    <div className="content-page">
+      <div className="content-background-glow content-glow-one" />
+      <div className="content-background-glow content-glow-two" />
 
-          <p className="mt-1 text-sm text-slate-500">
-            Manage, organize and track all your social media content.
-          </p>
-        </div>
-
-        <button className="flex w-fit items-center gap-2 rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700">
-          <Plus size={18} />
-          Create Post
-        </button>
-      </div>
-
-      {/* Main Container */}
-      <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
-        {/* Tabs */}
-        <div className="px-4 pt-2 md:px-6">
-          <ContentTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-        </div>
-
-        {/* Filters */}
-        <div className="border-b border-slate-100 p-4 md:p-6">
-          <ContentFilters
-            search={search}
-            setSearch={setSearch}
-            platform={platform}
-            setPlatform={setPlatform}
-          />
-        </div>
-
-        {/* Posts */}
-        <div className="p-4 md:p-6">
-          {filteredPosts.length > 0 ? (
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {filteredPosts.map((post) => (
-                <ContentCard key={post.id} post={post} />
-              ))}
+      <div className="content-container">
+        {/* HEADER */}
+        <header className="content-page-header">
+          <div className="content-heading">
+            <div className="content-heading-icon">
+              <Layers3 size={21} strokeWidth={1.8} />
             </div>
-          ) : (
-            <div className="flex min-h-[300px] flex-col items-center justify-center text-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 text-slate-400">
-                <FileText size={25} />
+
+            <div>
+              <h1>Content</h1>
+
+              <p>Manage, organize and track all your social media content.</p>
+            </div>
+          </div>
+
+          <button className="content-create-btn">
+            <Plus size={17} strokeWidth={2.4} />
+            <span>Create Post</span>
+          </button>
+        </header>
+
+        {/* MAIN CARD */}
+        <section className="content-main-card">
+          {/* TABS */}
+          <div className="content-tabs-section">
+            <ContentTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+          </div>
+
+          {/* FILTERS */}
+          <div className="content-filters-section">
+            <ContentFilters
+              search={search}
+              setSearch={setSearch}
+              platform={platform}
+              setPlatform={setPlatform}
+            />
+          </div>
+
+          {/* POSTS */}
+          <div className="content-posts-section">
+            {filteredPosts.length > 0 ? (
+              <div className="content-post-grid">
+                {filteredPosts.map((post) => (
+                  <ContentCard key={post.id} post={post} />
+                ))}
               </div>
+            ) : (
+              <div className="content-empty-state">
+                <div className="content-empty-icon">
+                  <FileText size={25} strokeWidth={1.7} />
+                </div>
 
-              <h3 className="mt-4 font-semibold text-slate-900">
-                No content found
-              </h3>
+                <h3>No content found</h3>
 
-              <p className="mt-1 max-w-sm text-sm text-slate-500">
-                Try changing your search, platform or content filter.
-              </p>
-            </div>
-          )}
-        </div>
+                <p>Try changing your search, platform or content filter.</p>
+              </div>
+            )}
+          </div>
+        </section>
       </div>
     </div>
   );

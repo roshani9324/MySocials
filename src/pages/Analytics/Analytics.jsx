@@ -1,57 +1,66 @@
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, BarChart3 } from "lucide-react";
 
 import AnalyticsStats from "./components/AnalyticsStats";
 import EngagementChart from "./components/EngagementChart";
 import PlatformPerformance from "./components/PlatformPerformance";
 
+import "./Analytics.css";
+
 export default function Analytics() {
   const [range, setRange] = useState("30 Days");
 
   return (
-    <div className="min-h-screen w-full bg-[#f8fafc] p-4 md:p-6 lg:p-8">
-      {/* Header */}
-      <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-center">
-        <div>
-          <h1 className="text-2xl font-bold text-slate-900 md:text-3xl">
-            Analytics
-          </h1>
+    <div className="analytics-page">
+      <div className="analytics-glow analytics-glow-one" />
+      <div className="analytics-glow analytics-glow-two" />
 
-          <p className="mt-1 text-sm text-slate-500">
-            Track your social media performance and growth.
-          </p>
-        </div>
+      <div className="analytics-container">
+        {/* HEADER */}
+        <header className="analytics-header">
+          <div className="analytics-heading">
+            <div className="analytics-heading-icon">
+              <BarChart3 size={21} strokeWidth={1.8} />
+            </div>
 
-        <div className="relative w-fit">
-          <select
-            value={range}
-            onChange={(e) => setRange(e.target.value)}
-            className="appearance-none rounded-xl border border-slate-200 bg-white px-4 py-2.5 pr-10 text-sm font-medium text-slate-700 shadow-sm outline-none transition focus:border-indigo-500"
-          >
-            <option>7 Days</option>
-            <option>30 Days</option>
-            <option>90 Days</option>
-            <option>1 Year</option>
-          </select>
+            <div>
+              <h1>Analytics</h1>
 
-          <ChevronDown
-            size={16}
-            className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"
-          />
-        </div>
-      </div>
+              <p>Track your social media performance and growth.</p>
+            </div>
+          </div>
 
-      {/* Stats */}
-      <AnalyticsStats />
+          {/* RANGE SELECTOR */}
+          <div className="analytics-range-wrapper">
+            <select
+              value={range}
+              onChange={(e) => setRange(e.target.value)}
+              className="analytics-range-select"
+            >
+              <option>7 Days</option>
+              <option>30 Days</option>
+              <option>90 Days</option>
+              <option>1 Year</option>
+            </select>
 
-      {/* Charts */}
-      <div className="mt-6">
-        <EngagementChart range={range} />
-      </div>
+            <ChevronDown size={15} className="analytics-range-chevron" />
+          </div>
+        </header>
 
-      {/* Platforms */}
-      <div className="mt-6">
-        <PlatformPerformance />
+        {/* STATS */}
+        <section className="analytics-stats-section">
+          <AnalyticsStats />
+        </section>
+
+        {/* ENGAGEMENT */}
+        <section className="analytics-chart-section">
+          <EngagementChart range={range} />
+        </section>
+
+        {/* PLATFORM PERFORMANCE */}
+        <section className="analytics-platform-section">
+          <PlatformPerformance />
+        </section>
       </div>
     </div>
   );

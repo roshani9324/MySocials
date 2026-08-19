@@ -1,24 +1,35 @@
 const tabs = [
-  { id: "all", label: "All Posts" },
-  { id: "published", label: "Published" },
-  { id: "scheduled", label: "Scheduled" },
-  { id: "drafts", label: "Drafts" },
+  {
+    id: "all",
+    label: "All Posts",
+  },
+  {
+    id: "published",
+    label: "Published",
+  },
+  {
+    id: "scheduled",
+    label: "Scheduled",
+  },
+  {
+    id: "drafts",
+    label: "Drafts",
+  },
 ];
 
 export default function ContentTabs({ activeTab, setActiveTab }) {
   return (
-    <div className="flex gap-1 overflow-x-auto border-b border-slate-200">
+    <div className="content-tabs">
       {tabs.map((tab) => (
         <button
           key={tab.id}
+          type="button"
           onClick={() => setActiveTab(tab.id)}
-          className={`whitespace-nowrap border-b-2 px-4 py-3 text-sm font-medium transition ${
-            activeTab === tab.id
-              ? "border-indigo-600 text-indigo-600"
-              : "border-transparent text-slate-500 hover:text-slate-900"
-          }`}
+          className={`content-tab ${activeTab === tab.id ? "active" : ""}`}
         >
-          {tab.label}
+          <span>{tab.label}</span>
+
+          {activeTab === tab.id && <span className="content-tab-indicator" />}
         </button>
       ))}
     </div>
