@@ -1,116 +1,347 @@
-import { motion } from "framer-motion";
-import { ArrowLeft, Save, Send, Sparkles } from "lucide-react";
+import React, { useState } from "react";
+import {
+  ArrowLeft,
+  Save,
+  Send,
+  Sparkles,
+  FileText,
+  CalendarClock,
+  CheckCircle2,
+} from "lucide-react";
 
-import PostEditor from "./components/PostEditor";
 import PlatformSelector from "./components/PlatformSelector";
+import PostEditor from "./components/PostEditor";
 import PostPreview from "./components/PostPreview";
 import SchedulePicker from "./components/SchedulePicker";
 
-export default function CreatePost() {
-  return (
-    <div className="min-h-screen w-full bg-[#050908] text-white px-4 sm:px-6 lg:px-8 py-6 ">
-      {/* Background */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-200px] right-[-150px] w-[500px] h-[500px] rounded-full bg-emerald-400/[0.06] blur-[140px]" />
-        <div className="absolute bottom-[-200px] left-[20%] w-[450px] h-[450px] rounded-full bg-emerald-500/[0.04] blur-[140px]" />
-      </div>
+import "./CreatePost.css";
 
-      <div className="relative z-10 max-w-[1500px] mx-auto">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -15 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-7"
-        >
-          <div className="flex items-center gap-4">
+const CreatePost = () => {
+  const [selectedPlatforms, setSelectedPlatforms] = useState([]);
+  const [postContent, setPostContent] = useState("");
+  const [scheduleData, setScheduleData] = useState({
+    date: "",
+    time: "",
+  });
+
+  const [activeAction, setActiveAction] = useState(null);
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleSaveDraft = () => {
+    setActiveAction("draft");
+
+    setTimeout(() => {
+      setActiveAction(null);
+      setShowSuccess(true);
+
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 2500);
+    }, 500);
+  };
+
+  const handlePublish = () => {
+    setActiveAction("publish");
+
+    setTimeout(() => {
+      setActiveAction(null);
+      setShowSuccess(true);
+
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 2500);
+    }, 500);
+  };
+
+  const handleSchedule = () => {
+    setActiveAction("schedule");
+
+    setTimeout(() => {
+      setActiveAction(null);
+      setShowSuccess(true);
+
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 2500);
+    }, 500);
+  };
+
+  return (
+    <div className="create-post-page">
+      {/* Background decoration */}
+      <div className="create-post-glow create-post-glow-one" />
+      <div className="create-post-glow create-post-glow-two" />
+
+      <div className="create-post-container">
+        {/* =====================================================
+            HEADER
+        ====================================================== */}
+        <header className="create-post-header">
+          <div className="create-post-heading">
             <button
+              type="button"
+              className="create-back-button"
               onClick={() => window.history.back()}
-              className="w-10 h-10 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.07] transition"
+              aria-label="Go back"
             >
-              <ArrowLeft size={18} />
+              <ArrowLeft size={17} />
             </button>
 
             <div>
-              <div className="flex items-center gap-2">
-                <h1 className="text-2xl sm:text-3xl font-semibold">
-                  Create Post
-                </h1>
-
-                <Sparkles size={18} className="text-emerald-400" />
+              <div className="create-heading-label">
+                <span className="create-heading-dot" />
+                CONTENT STUDIO
               </div>
 
-              <p className="text-sm text-gray-500 mt-1">
-                Create, customize and schedule your social media content.
+              <h1>Create Post</h1>
+
+              <p>
+                Create, customize and publish content across your connected
+                social platforms.
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="create-header-actions">
             <button
-              className="
-                flex items-center gap-2
-                px-4 py-2.5
-                rounded-xl
-                border border-white/10
-                bg-white/[0.03]
-                text-sm text-gray-300
-                hover:bg-white/[0.07]
-                transition
-              "
+              type="button"
+              className="create-draft-button"
+              onClick={handleSaveDraft}
+              disabled={activeAction !== null}
             >
-              <Save size={16} />
-              Save Draft
+              <Save size={15} />
+
+              {activeAction === "draft" ? "Saving..." : "Save Draft"}
             </button>
 
             <button
-              className="
-                flex items-center gap-2
-                px-5 py-2.5
-                rounded-xl
-                bg-emerald-400
-                text-black
-                text-sm font-semibold
-                hover:bg-emerald-300
-                transition
-                shadow-[0_0_25px_rgba(72,255,174,0.15)]
-              "
+              type="button"
+              className="create-publish-button"
+              onClick={handlePublish}
+              disabled={activeAction !== null}
             >
-              <Send size={16} />
-              Publish
+              <Send size={15} />
+
+              {activeAction === "publish" ? "Publishing..." : "Publish"}
             </button>
           </div>
-        </motion.div>
+        </header>
 
-        {/* Main Grid */}
-        <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_430px] gap-6">
-          {/* LEFT */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="space-y-5"
-          >
+        {/* =====================================================
+            SUCCESS MESSAGE
+        ====================================================== */}
+        {showSuccess && (
+          <div className="create-success-message">
+            <div className="create-success-icon">
+              <CheckCircle2 size={15} />
+            </div>
+
+            <div>
+              <strong>Action completed successfully</strong>
+              <span>Your changes have been saved.</span>
+            </div>
+          </div>
+        )}
+
+        {/* =====================================================
+            MAIN WORKSPACE
+        ====================================================== */}
+        <main className="create-post-workspace">
+          {/* ===================================================
+              LEFT COLUMN
+          ==================================================== */}
+          <section className="create-editor-column">
             {/* Platform */}
-            <PlatformSelector />
+            <div className="create-card">
+              <div className="create-card-header">
+                <div className="create-card-title-wrapper">
+                  <div className="create-card-icon">
+                    <Sparkles size={16} />
+                  </div>
+
+                  <div>
+                    <span className="create-card-eyebrow">DISTRIBUTION</span>
+
+                    <h2>Select Platforms</h2>
+
+                    <p>Choose where you want to publish this post.</p>
+                  </div>
+                </div>
+
+                {selectedPlatforms.length > 0 && (
+                  <span className="create-selection-count">
+                    {selectedPlatforms.length} selected
+                  </span>
+                )}
+              </div>
+
+              <div className="create-card-body">
+                <PlatformSelector
+                  selectedPlatforms={selectedPlatforms}
+                  setSelectedPlatforms={setSelectedPlatforms}
+                />
+              </div>
+            </div>
 
             {/* Editor */}
-            <PostEditor />
+            <div className="create-card create-editor-card">
+              <div className="create-card-header">
+                <div className="create-card-title-wrapper">
+                  <div className="create-card-icon">
+                    <FileText size={16} />
+                  </div>
+
+                  <div>
+                    <span className="create-card-eyebrow">COMPOSE</span>
+
+                    <h2>Create your post</h2>
+
+                    <p>Write your content and add media to your post.</p>
+                  </div>
+                </div>
+
+                <span className="create-editor-status">
+                  {postContent.length}/2,200
+                </span>
+              </div>
+
+              <div className="create-card-body create-editor-body">
+                <PostEditor
+                  postContent={postContent}
+                  setPostContent={setPostContent}
+                />
+              </div>
+            </div>
 
             {/* Schedule */}
-            <SchedulePicker />
-          </motion.div>
+            <div className="create-card">
+              <div className="create-card-header">
+                <div className="create-card-title-wrapper">
+                  <div className="create-card-icon">
+                    <CalendarClock size={16} />
+                  </div>
 
-          {/* RIGHT */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="xl:sticky xl:top-6 h-fit"
-          >
-            <PostPreview />
-          </motion.div>
-        </div>
+                  <div>
+                    <span className="create-card-eyebrow">PUBLISHING</span>
+
+                    <h2>Schedule Post</h2>
+
+                    <p>Choose when you want your post to go live.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="create-card-body">
+                <SchedulePicker
+                  scheduleData={scheduleData}
+                  setScheduleData={setScheduleData}
+                />
+              </div>
+
+              <div className="create-schedule-footer">
+                <div className="create-schedule-info">
+                  <CalendarClock size={14} />
+
+                  <span>Schedule your post for a specific date and time.</span>
+                </div>
+
+                <button
+                  type="button"
+                  className="create-schedule-button"
+                  onClick={handleSchedule}
+                  disabled={activeAction !== null}
+                >
+                  <CalendarClock size={15} />
+
+                  {activeAction === "schedule"
+                    ? "Scheduling..."
+                    : "Schedule Post"}
+                </button>
+              </div>
+            </div>
+          </section>
+
+          {/* ===================================================
+              RIGHT COLUMN
+          ==================================================== */}
+          <aside className="create-preview-column">
+            <div className="create-preview-sticky">
+              <div className="create-preview-card">
+                <div className="create-preview-header">
+                  <div>
+                    <span className="create-card-eyebrow">LIVE PREVIEW</span>
+
+                    <h2>Post Preview</h2>
+
+                    <p>See how your content will look before publishing.</p>
+                  </div>
+
+                  <span className="create-live-indicator">
+                    <span />
+                    Live
+                  </span>
+                </div>
+
+                <div className="create-preview-content">
+                  <PostPreview
+                    selectedPlatforms={selectedPlatforms}
+                    postContent={postContent}
+                  />
+                </div>
+              </div>
+
+              {/* Publishing Summary */}
+              <div className="create-summary-card">
+                <div className="create-summary-header">
+                  <span>POST SUMMARY</span>
+                </div>
+
+                <div className="create-summary-row">
+                  <span>Platforms</span>
+
+                  <strong>
+                    {selectedPlatforms.length > 0
+                      ? selectedPlatforms.length
+                      : "None"}
+                  </strong>
+                </div>
+
+                <div className="create-summary-row">
+                  <span>Content</span>
+
+                  <strong>
+                    {postContent.trim().length > 0 ? "Added" : "Empty"}
+                  </strong>
+                </div>
+
+                <div className="create-summary-row">
+                  <span>Schedule</span>
+
+                  <strong>
+                    {scheduleData.date && scheduleData.time
+                      ? "Scheduled"
+                      : "Now"}
+                  </strong>
+                </div>
+
+                <div className="create-summary-divider" />
+
+                <div className="create-summary-status">
+                  <span className="create-status-dot" />
+
+                  <div>
+                    <strong>Ready to publish</strong>
+
+                    <p>Review your content and publish when you're ready.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </main>
       </div>
     </div>
   );
-}
+};
+
+export default CreatePost;
