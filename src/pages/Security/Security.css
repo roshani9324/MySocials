@@ -1,0 +1,98 @@
+.security-page {
+    background:
+        radial-gradient(circle at 82% 5%,
+            rgba(75, 222, 143, 0.07),
+            transparent 25%),
+        radial-gradient(circle at 8% 80%,
+            rgba(54, 190, 112, 0.035),
+            transparent 28%),
+        #050908;
+}
+
+.security-glow {
+    position: fixed;
+
+    border-radius: 50%;
+
+    filter: blur(110px);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.security-glow-one {
+    width: 400px;
+    height: 400px;
+
+    right: -140px;
+    top: 80px;
+
+    background: rgba(67, 218, 136, 0.04);
+}
+
+.security-glow-two {
+    width: 300px;
+    height: 300px;
+
+    left: -120px;
+    bottom: 80px;
+
+    background: rgba(44, 183, 105, 0.025);
+}
+
+.security-container {
+    max-width: 1180px;
+}
+
+.security-related {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-top: 28px;
+
+    padding: 16px 18px;
+
+    border:
+        1px solid rgba(104, 221, 158, 0.09);
+
+    border-radius: 12px;
+
+    background:
+        rgba(104, 221, 158, 0.025);
+
+    color: #64d99b;
+}
+
+.security-related>svg {
+    flex-shrink: 0;
+}
+
+.security-related p {
+    margin: 0 0 4px;
+
+    color: #4d5d54;
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+}
+
+.security-related a {
+    color: #69dda0;
+
+    font-size: 9px;
+
+    text-decoration: none;
+}
+
+.security-related a:hover {
+    text-decoration: underline;
+}

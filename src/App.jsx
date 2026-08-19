@@ -16,7 +16,9 @@ import Settings from "./pages/Settings/Settings";
 import Accounts from "./pages/Accounts/Accounts";
 import Content from "./pages/Content/Content";
 import Calendar from "./pages/Calendar/Calendar";
-
+import Refunds from "./pages/Refunds/Refunds";
+import Security from "./pages/Security/Security";
+import Contact from "./pages/Contact/Contact";
 
 function Placeholder({ title }) {
   return (
@@ -53,6 +55,9 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/refunds" element={<Refunds />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/security" element={<Security />} />
 
         {/* Dashboard — ab DashboardLayout ke andar wrapped */}
         <Route element={<DashboardLayout />}>

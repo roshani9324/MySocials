@@ -40,13 +40,15 @@ function Footer() {
           <h4>Company</h4>
           <a href="#top">About us</a>
           <a href="#top">Careers</a>
-          <a href="#top">Contact</a>
+          <a href="/contact">Contact</a>
         </div>
 
         <div className="footer-column">
           <h4>Legal</h4>
           <a href="/privacy">Privacy policy</a>
           <a href="/terms">Terms of service</a>
+          <a href="/security">Security Policy</a>
+          <a href="/refunds">Refund and Cancellation Policy</a>
         </div>
 
         <div className="footer-column">
