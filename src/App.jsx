@@ -19,7 +19,9 @@ import Calendar from "./pages/Calendar/Calendar";
 import Refunds from "./pages/Refunds/Refunds";
 import Security from "./pages/Security/Security";
 import Contact from "./pages/Contact/Contact";
-
+import History from "./pages/History/History";
+import Help from "./pages/Help/Help";
+import { ThemeProvider } from "./context/ThemeContext";
 function Placeholder({ title }) {
   return (
     <div
@@ -39,38 +41,42 @@ function Placeholder({ title }) {
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Public */}
-        <Route
-          path="/"
-          element={
-            <PublicLayout>
-              <Home />
-            </PublicLayout>
-          }
-        />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/create-account" element={<CreateAccount />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/terms" element={<Terms />} />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/refunds" element={<Refunds />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/security" element={<Security />} />
+    <ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Public */}
+          <Route
+            path="/"
+            element={
+              <PublicLayout>
+                <Home />
+              </PublicLayout>
+            }
+          />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/create-account" element={<CreateAccount />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/refunds" element={<Refunds />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/security" element={<Security />} />
 
-        {/* Dashboard — ab DashboardLayout ke andar wrapped */}
-        <Route element={<DashboardLayout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/create-post" element={<CreatePost />} />
-          <Route path="/calendar" element={<Calendar />} />
-          <Route path="/content" element={<Content />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="/accounts" element={<Accounts />} />
-          <Route path="/settings" element={<Settings />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          {/* Dashboard — ab DashboardLayout ke andar wrapped */}
+          <Route element={<DashboardLayout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/create-post" element={<CreatePost />} />
+            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/content" element={<Content />} />
+            <Route path="/analytics" element={<Analytics />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/accounts" element={<Accounts />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/help" element={<Help />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

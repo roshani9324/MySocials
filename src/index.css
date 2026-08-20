@@ -2523,7 +2523,7 @@ input {
     radial-gradient(circle at 20% 80%,
       rgba(30, 130, 80, 0.05),
       transparent 30%),
-    #050907;
+    var(--bg-color);
 }
 
 .sidebar {
@@ -2915,11 +2915,10 @@ input {
 
   padding: 0 30px;
 
-  background:
-    rgba(5, 10, 8, 0.72);
+  background: color-mix(in srgb, var(--bg-color) 88%, transparent);
 
   border-bottom:
-    1px solid rgba(170, 255, 202, 0.07);
+    1px solid var(--border-color);
 
   backdrop-filter: blur(22px);
 }
@@ -3001,7 +3000,7 @@ input {
 
   border-radius: 50%;
 
-  background: #65e6a4;
+  background: var(--accent-secondary);
 
   box-shadow:
     0 0 8px rgba(100, 230, 160, 0.6);
@@ -3016,10 +3015,7 @@ input {
 
   border-radius: 8px;
 
-  background:
-    linear-gradient(135deg,
-      #86e9af,
-      #5bd997);
+  background: var(--accent-secondary);
 
   box-shadow:
     0 8px 25px rgba(60, 210, 125, 0.10);
@@ -3033,7 +3029,7 @@ input {
   transform: translateY(-1px);
 
   box-shadow:
-    0 12px 30px rgba(60, 210, 125, 0.18);
+    0 12px 30px color-mix(in srgb, var(--accent-color) 18%, transparent);
 }
 
 /* =========================================

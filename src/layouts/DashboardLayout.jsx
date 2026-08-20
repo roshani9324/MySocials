@@ -5,6 +5,9 @@ import {
   CalendarDays,
   FileText,
   BarChart3,
+  CircleHelp
+          ,
+
   Users,
   Settings,
   Menu,
@@ -15,8 +18,10 @@ import {
   Search,
   Bell,
   Sparkles,
+  Clock3,
 } from "lucide-react";
 import { useState } from "react";
+import ThemeSwitcher from "../components/ThemeSwitcher/ThemeSwitcher";
 
 const navigation = [
   {
@@ -45,10 +50,16 @@ const navigation = [
     icon: BarChart3,
   },
   {
+    name: "History",
+    path: "/history",
+    icon: Clock3,
+  },
+  {
     name: "Accounts",
     path: "/accounts",
     icon: Users,
   },
+  
 ];
 
 export default function DashboardLayout() {
@@ -157,7 +168,10 @@ export default function DashboardLayout() {
           {/* Account section */}
 
           {!collapsed && <p className="nav-label account-label">ACCOUNT</p>}
-
+          <NavLink to="/help" className="sidebar-link">
+            <CircleHelp size={18} />
+            <span>Help</span>
+          </NavLink>
           <NavLink
             to="/settings"
             onClick={() => setMobileOpen(false)}
@@ -293,6 +307,11 @@ export default function DashboardLayout() {
               <span className="notification-dot" />
             </button>
 
+            <div className="header-actions">
+              <ThemeSwitcher />
+
+              {/* Existing notification/profile buttons */}
+            </div>
             <button
               className="header-create"
               onClick={() => navigate("/create-post")}

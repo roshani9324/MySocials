@@ -1,0 +1,387 @@
+/* =========================================================
+   MySocials Global Theme System
+   ========================================================= */
+
+:root {
+    --bg-color: #0b1020;
+    --surface-color: #111827;
+    --surface-hover: #1a2335;
+    --panel-color: #111827;
+
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    --border-color: rgba(148, 163, 184, 0.18);
+
+    --accent-color: #7c3aed;
+    --accent-secondary: #22d3ee;
+    --accent-contrast: #ffffff;
+
+    --success-color: #22c55e;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+    --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.4);
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+}
+
+/* =========================================================
+   1. Aurora Noir
+   ========================================================= */
+
+[data-theme="aurora-noir"] {
+    --bg-color: #0b1020;
+    --surface-color: #111827;
+    --surface-hover: #182235;
+    --panel-color: #111827;
+
+    --text-primary: #f8fafc;
+    --text-secondary: #a5b4fc;
+    --text-muted: #64748b;
+
+    --border-color: rgba(124, 58, 237, 0.22);
+
+    --accent-color: #7c3aed;
+    --accent-secondary: #22d3ee;
+    --accent-contrast: #ffffff;
+}
+
+/* =========================================================
+   2. Nebula
+   ========================================================= */
+
+[data-theme="nebula"] {
+    --bg-color: #120a2a;
+    --surface-color: #1b1038;
+    --surface-hover: #28164f;
+    --panel-color: #1b1038;
+
+    --text-primary: #faf5ff;
+    --text-secondary: #d8b4fe;
+    --text-muted: #a78bfa;
+
+    --border-color: rgba(236, 72, 153, 0.2);
+
+    --accent-color: #8b5cf6;
+    --accent-secondary: #ec4899;
+    --accent-contrast: #ffffff;
+}
+
+/* =========================================================
+   3. Vivid Indigo
+   ========================================================= */
+
+[data-theme="vivid-indigo"] {
+    --bg-color: #0f172a;
+    --surface-color: #172554;
+    --surface-hover: #1e3a8a;
+    --panel-color: #172554;
+
+    --text-primary: #f8fafc;
+    --text-secondary: #c7d2fe;
+    --text-muted: #818cf8;
+
+    --border-color: rgba(99, 102, 241, 0.25);
+
+    --accent-color: #4f46e5;
+    --accent-secondary: #818cf8;
+    --accent-contrast: #ffffff;
+}
+
+/* =========================================================
+   4. Midnight Slate
+   ========================================================= */
+
+[data-theme="midnight-slate"] {
+    --bg-color: #0f172a;
+    --surface-color: #1e293b;
+    --surface-hover: #334155;
+    --panel-color: #1e293b;
+
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+
+    --border-color: rgba(148, 163, 184, 0.2);
+
+    --accent-color: #64748b;
+    --accent-secondary: #94a3b8;
+    --accent-contrast: #ffffff;
+}
+
+/* =========================================================
+   5. Onyx & Gold
+   ========================================================= */
+
+[data-theme="onyx-gold"] {
+    --bg-color: #090909;
+    --surface-color: #151515;
+    --surface-hover: #202020;
+    --panel-color: #151515;
+
+    --text-primary: #fafafa;
+    --text-secondary: #d4d4d4;
+    --text-muted: #a3a3a3;
+
+    --border-color: rgba(212, 175, 55, 0.25);
+
+    --accent-color: #d4af37;
+    --accent-secondary: #f5d76e;
+    --accent-contrast: #111111;
+}
+
+/* =========================================================
+   6. Space Electric
+   ========================================================= */
+
+[data-theme="space-electric"] {
+    --bg-color: #050b18;
+    --surface-color: #0b1428;
+    --surface-hover: #102040;
+    --panel-color: #0b1428;
+
+    --text-primary: #eff6ff;
+    --text-secondary: #bfdbfe;
+    --text-muted: #7dd3fc;
+
+    --border-color: rgba(56, 189, 248, 0.2);
+
+    --accent-color: #2563eb;
+    --accent-secondary: #38bdf8;
+    --accent-contrast: #ffffff;
+}
+
+/* =========================================================
+   7. Space Teal
+   ========================================================= */
+
+[data-theme="space-teal"] {
+    --bg-color: #061a1a;
+    --surface-color: #0b2727;
+    --surface-hover: #103838;
+    --panel-color: #0b2727;
+
+    --text-primary: #ecfeff;
+    --text-secondary: #99f6e4;
+    --text-muted: #5eead4;
+
+    --border-color: rgba(45, 212, 191, 0.2);
+
+    --accent-color: #0f766e;
+    --accent-secondary: #2dd4bf;
+    --accent-contrast: #ffffff;
+}
+
+/* =========================================================
+   8. Space Frost
+   ========================================================= */
+
+[data-theme="space-frost"] {
+    --bg-color: #08111f;
+    --surface-color: #111c2d;
+    --surface-hover: #1c2b40;
+    --panel-color: #111c2d;
+
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+
+    --border-color: rgba(203, 213, 225, 0.18);
+
+    --accent-color: #64748b;
+    --accent-secondary: #cbd5e1;
+    --accent-contrast: #ffffff;
+}
+
+/* =========================================================
+   9. Pinterest Dark
+   ========================================================= */
+
+[data-theme="pinterest-dark"] {
+    --bg-color: #0d0d0d;
+    --surface-color: #181818;
+    --surface-hover: #242424;
+    --panel-color: #181818;
+
+    --text-primary: #ffffff;
+    --text-secondary: #d4d4d4;
+    --text-muted: #a3a3a3;
+
+    --border-color: rgba(255, 255, 255, 0.12);
+
+    --accent-color: #e60023;
+    --accent-secondary: #ff5a70;
+    --accent-contrast: #ffffff;
+}
+
+/* =========================================================
+   10. Noir Academia
+   ========================================================= */
+
+[data-theme="noir-academia"] {
+    --bg-color: #171411;
+    --surface-color: #211c18;
+    --surface-hover: #302720;
+    --panel-color: #211c18;
+
+    --text-primary: #f5eee5;
+    --text-secondary: #d6c4ad;
+    --text-muted: #a89580;
+
+    --border-color: rgba(214, 185, 140, 0.2);
+
+    --accent-color: #6b5848;
+    --accent-secondary: #d6b98c;
+    --accent-contrast: #ffffff;
+}
+
+/* =========================================================
+   11. Obsidian Platinum
+   ========================================================= */
+
+[data-theme="obsidian-platinum"] {
+    --bg-color: #080808;
+    --surface-color: #141414;
+    --surface-hover: #202020;
+    --panel-color: #141414;
+
+    --text-primary: #fafafa;
+    --text-secondary: #d4d4d8;
+    --text-muted: #a1a1aa;
+
+    --border-color: rgba(228, 228, 231, 0.18);
+
+    --accent-color: #71717a;
+    --accent-secondary: #e4e4e7;
+    --accent-contrast: #111111;
+}
+
+/* =========================================================
+   12. Emerald Gold
+   ========================================================= */
+
+[data-theme="emerald-gold"] {
+    --bg-color: #07140f;
+    --surface-color: #0d2118;
+    --surface-hover: #123522;
+    --panel-color: #0d2118;
+
+    --text-primary: #ecfdf5;
+    --text-secondary: #a7f3d0;
+    --text-muted: #6ee7b7;
+
+    --border-color: rgba(212, 175, 55, 0.2);
+
+    --accent-color: #047857;
+    --accent-secondary: #d4af37;
+    --accent-contrast: #ffffff;
+}
+
+/* =========================================================
+   13. Sapphire Champagne
+   ========================================================= */
+
+[data-theme="sapphire-champagne"] {
+    --bg-color: #07111f;
+    --surface-color: #0d1c31;
+    --surface-hover: #142b49;
+    --panel-color: #0d1c31;
+
+    --text-primary: #eff6ff;
+    --text-secondary: #bfdbfe;
+    --text-muted: #93c5fd;
+
+    --border-color: rgba(243, 209, 156, 0.22);
+
+    --accent-color: #2563eb;
+    --accent-secondary: #f3d19c;
+    --accent-contrast: #ffffff;
+}
+
+/* =========================================================
+   14. Burgundy Brass
+   ========================================================= */
+
+[data-theme="burgundy-brass"] {
+    --bg-color: #1a080d;
+    --surface-color: #2a1017;
+    --surface-hover: #3d1620;
+    --panel-color: #2a1017;
+
+    --text-primary: #fff1f2;
+    --text-secondary: #fecdd3;
+    --text-muted: #fda4af;
+
+    --border-color: rgba(197, 160, 89, 0.22);
+
+    --accent-color: #7f1d1d;
+    --accent-secondary: #c5a059;
+    --accent-contrast: #ffffff;
+}
+
+/* =========================================================
+   15. Onyx Rose Gold
+   ========================================================= */
+
+[data-theme="onyx-rose-gold"] {
+    --bg-color: #090909;
+    --surface-color: #171314;
+    --surface-hover: #251c1e;
+    --panel-color: #171314;
+
+    --text-primary: #fff7f8;
+    --text-secondary: #f0cdd1;
+    --text-muted: #d7a5ac;
+
+    --border-color: rgba(232, 180, 184, 0.2);
+
+    --accent-color: #be7b8a;
+    --accent-secondary: #e8b4b8;
+    --accent-contrast: #ffffff;
+}
+
+:root,
+[data-theme] {
+    --bg: var(--bg-color);
+    --surface: var(--surface-color);
+    --surface-light: var(--surface-hover);
+    --green: var(--accent-color);
+    --green-light: var(--accent-secondary);
+    --green-dark: var(--accent-color);
+    --text: var(--text-primary);
+    --muted: var(--text-secondary);
+    --muted-dark: var(--text-muted);
+    --border: var(--border-color);
+}
+
+/* =========================================================
+   Global theme transitions
+   ========================================================= */
+
+html,
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+}
+
+body,
+button,
+input,
+textarea,
+select,
+div,
+section,
+header,
+aside,
+main {
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
