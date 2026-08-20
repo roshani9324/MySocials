@@ -1,58 +1,114 @@
-import { useState } from "react";
 import { Check, ChevronDown } from "lucide-react";
-import { FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
-
+import { FaInstagram, FaYoutube, FaLinkedin, FaFacebook } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import "./PlatformSelector.css";
 const platforms = [
   {
     name: "Instagram",
     username: "@roshani",
     icon: FaInstagram,
+    iconClass: "platform-instagram",
   },
   {
     name: "YouTube",
     username: "@roshani",
     icon: FaYoutube,
+    iconClass: "platform-youtube",
+  },
+  {
+    name: "X",
+    username: "@roshani",
+    icon: FaXTwitter,
+    iconClass: "platform-x",
+  },
+  {
+    name: "Facebook",
+    username: "Roshani Maurya",
+    icon: FaFacebook,
+    iconClass: "platform-facebook",
   },
   {
     name: "LinkedIn",
     username: "Roshani Maurya",
     icon: FaLinkedin,
+    iconClass: "platform-linkedin",
+  },
+  {
+    name: "Threads",
+    username: "@roshani",
+    icon: FaInstagram,
+    iconClass: "platform-threads",
   },
 ];
 
-export default function PlatformSelector() {
-  const [selected, setSelected] = useState(["Instagram"]);
+export default function PlatformSelector({
+  selectedPlatforms = [],
+  setSelectedPlatforms,
+}) {
+  /*
+   * Keep compatibility if this component is ever used
+   * without the parent state.
+   */
+  const selected = Array.isArray(selectedPlatforms) ? selectedPlatforms : [];
 
   const togglePlatform = (name) => {
-    setSelected((prev) =>
+    if (!setSelectedPlatforms) return;
+
+    setSelectedPlatforms((prev) =>
       prev.includes(name)
         ? prev.filter((item) => item !== name)
         : [...prev, name],
     );
   };
 
-  return (
-    <div className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-5">
-        <div>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-emerald-400/70">
-            Platforms
-          </p>
+  const toggleAllPlatforms = () => {
+    if (!setSelectedPlatforms) return;
 
-          <h2 className="text-base font-medium text-white mt-1">Publish to</h2>
+    const allPlatformNames = platforms.map((platform) => platform.name);
+
+    const allSelected = allPlatformNames.every((name) =>
+      selected.includes(name),
+    );
+
+    setSelectedPlatforms(allSelected ? [] : allPlatformNames);
+  };
+
+  const allSelected =
+    platforms.length > 0 &&
+    platforms.every((platform) => selected.includes(platform.name));
+
+  return (
+    <div className="platform-selector">
+      {/* =====================================================
+          HEADER
+      ====================================================== */}
+
+      <div className="platform-selector-header">
+        <div>
+          <p className="platform-selector-eyebrow">Platforms</p>
+
+          <h2 className="platform-selector-title">Publish to</h2>
         </div>
 
-        <button className="flex items-center gap-1 text-[11px] text-white/30 hover:text-white/60 transition">
-          Select all
+        <button
+          type="button"
+          onClick={toggleAllPlatforms}
+          className="platform-select-all"
+        >
+          {allSelected ? "Deselect all" : "Select all"}
+
           <ChevronDown size={13} />
         </button>
       </div>
 
-      {/* Platforms */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      {/* =====================================================
+          PLATFORM GRID
+      ====================================================== */}
+
+      <div className="platform-grid">
         {platforms.map((platform) => {
           const Icon = platform.icon;
+
           const isSelected = selected.includes(platform.name);
 
           return (
@@ -60,66 +116,36 @@ export default function PlatformSelector() {
               key={platform.name}
               type="button"
               onClick={() => togglePlatform(platform.name)}
-              className={`
-                relative
-                flex items-center gap-3
-                rounded-xl
-                border
-                p-3
-                text-left
-                transition-all
-                ${
-                  isSelected
-                    ? "border-emerald-400/30 bg-emerald-400/[0.07]"
-                    : "border-white/[0.07] bg-white/[0.015] hover:bg-white/[0.04]"
-                }
-              `}
+              aria-pressed={isSelected}
+              className={`platform-item ${isSelected ? "selected" : ""}`}
             >
-              {/* Icon */}
+              {/* =================================================
+                  ICON
+              ================================================== */}
+
               <div
-                className={`
-                  w-10 h-10
-                  shrink-0
-                  rounded-xl
-                  flex items-center justify-center
-                  ${
-                    isSelected
-                      ? "bg-emerald-400/10 text-emerald-400"
-                      : "bg-white/[0.04] text-white/40"
-                  }
-                `}
+                className={`platform-icon ${platform.iconClass} ${
+                  isSelected ? "active" : ""
+                }`}
               >
                 <Icon size={19} />
               </div>
 
-              {/* Text */}
-              <div className="min-w-0">
-                <p className="text-xs font-medium text-white/80">
-                  {platform.name}
-                </p>
+              {/* =================================================
+                  PLATFORM INFO
+              ================================================== */}
 
-                <p className="text-[10px] text-white/30 mt-1 truncate">
-                  {platform.username}
-                </p>
+              <div className="platform-info">
+                <p className="platform-name">{platform.name}</p>
+
+                <p className="platform-username">{platform.username}</p>
               </div>
 
-              {/* Check */}
-              <div
-                className={`
-                  absolute
-                  top-3
-                  right-3
-                  w-4
-                  h-4
-                  rounded-full
-                  flex items-center justify-center
-                  ${
-                    isSelected
-                      ? "bg-emerald-400 text-black"
-                      : "border border-white/10"
-                  }
-                `}
-              >
+              {/* =================================================
+                  CHECK
+              ================================================== */}
+
+              <div className={`platform-check ${isSelected ? "checked" : ""}`}>
                 {isSelected && <Check size={10} strokeWidth={3} />}
               </div>
             </button>
@@ -127,10 +153,15 @@ export default function PlatformSelector() {
         })}
       </div>
 
-      {/* Info */}
-      <p className="text-[10px] text-white/20 mt-4">
-        Select one or more platforms to publish your content.
-      </p>
+      {/* =====================================================
+          SELECTED COUNT
+      ====================================================== */}
+
+      <div className="platform-selector-footer">
+        <span>Select one or more platforms to publish your content.</span>
+
+        {selected.length > 0 && <strong>{selected.length}/6 selected</strong>}
+      </div>
     </div>
   );
 }

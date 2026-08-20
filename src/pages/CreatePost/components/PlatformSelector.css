@@ -1,0 +1,368 @@
+/* =========================================================
+   PLATFORM SELECTOR
+========================================================= */
+
+.platform-selector {
+    width: 100%;
+
+    padding: 20px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+
+    background: var(--surface-color);
+
+    color: var(--text-primary);
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.platform-selector-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-bottom: 18px;
+}
+
+.platform-selector-eyebrow {
+    margin: 0;
+
+    color: var(--accent-secondary);
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.platform-selector-title {
+    margin: 4px 0 0;
+
+    color: var(--text-primary);
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.platform-select-all {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 4px;
+
+    padding: 6px 8px;
+
+    border: 0;
+
+    background: transparent;
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        color 0.18s ease,
+        background 0.18s ease;
+}
+
+.platform-select-all:hover {
+    border-radius: 7px;
+
+    background: var(--surface-hover);
+
+    color: var(--text-primary);
+}
+
+/* =========================================================
+   PLATFORM GRID
+========================================================= */
+
+.platform-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 10px;
+}
+
+/* =========================================================
+   PLATFORM ITEM
+========================================================= */
+
+.platform-item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    min-width: 0;
+
+    gap: 10px;
+
+    padding: 12px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+
+    background: var(--surface-hover);
+
+    color: var(--text-primary);
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.18s ease,
+        background 0.18s ease,
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.platform-item:hover {
+    border-color: color-mix(in srgb,
+            var(--accent-color) 30%,
+            var(--border-color));
+
+    transform: translateY(-1px);
+}
+
+.platform-item.selected {
+    border-color: color-mix(in srgb,
+            var(--accent-color) 45%,
+            var(--border-color));
+
+    background: color-mix(in srgb,
+            var(--accent-color) 7%,
+            var(--surface-color));
+
+    box-shadow: var(--shadow-sm);
+}
+
+/* =========================================================
+   PLATFORM ICON
+========================================================= */
+
+.platform-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: var(--surface-color);
+
+    color: var(--text-muted);
+
+    transition:
+        background 0.18s ease,
+        color 0.18s ease,
+        transform 0.18s ease;
+}
+
+.platform-item:hover .platform-icon {
+    transform: scale(1.03);
+}
+
+/* =========================================================
+   BRAND COLORS
+========================================================= */
+
+.platform-instagram {
+    color: #e4405f;
+}
+
+.platform-youtube {
+    color: #ff0000;
+}
+
+.platform-x {
+    color: var(--text-primary);
+}
+
+.platform-facebook {
+    color: #1877f2;
+}
+
+.platform-linkedin {
+    color: #0a66c2;
+}
+
+/*
+ * Threads does not have a dedicated icon in the installed
+ * react-icons set being used here.
+ *
+ * We intentionally keep its visual treatment neutral instead
+ * of using an incorrect Instagram icon.
+ */
+.platform-threads {
+    color: var(--text-primary);
+}
+
+.platform-icon.active.platform-instagram {
+    background: color-mix(in srgb,
+            #e4405f 10%,
+            var(--surface-color));
+}
+
+.platform-icon.active.platform-youtube {
+    background: color-mix(in srgb,
+            #ff0000 10%,
+            var(--surface-color));
+}
+
+.platform-icon.active.platform-facebook {
+    background: color-mix(in srgb,
+            #1877f2 10%,
+            var(--surface-color));
+}
+
+.platform-icon.active.platform-linkedin {
+    background: color-mix(in srgb,
+            #0a66c2 10%,
+            var(--surface-color));
+}
+
+/* =========================================================
+   PLATFORM INFO
+========================================================= */
+
+.platform-info {
+    min-width: 0;
+
+    padding-right: 18px;
+}
+
+.platform-name {
+    margin: 0;
+
+    overflow: hidden;
+
+    color: var(--text-primary);
+
+    font-size: 10px;
+    font-weight: 650;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.platform-username {
+    margin: 4px 0 0;
+
+    overflow: hidden;
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* =========================================================
+   CHECK
+========================================================= */
+
+.platform-check {
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 15px;
+    height: 15px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: var(--accent-contrast);
+
+    transition:
+        background 0.18s ease,
+        border-color 0.18s ease;
+}
+
+.platform-check.checked {
+    border-color: var(--accent-color);
+
+    background: var(--accent-color);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.platform-selector-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-top: 15px;
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+}
+
+.platform-selector-footer strong {
+    flex-shrink: 0;
+
+    color: var(--text-secondary);
+
+    font-size: 9px;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+    .platform-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+    .platform-selector {
+        padding: 15px;
+    }
+
+    .platform-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .platform-selector-footer {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 5px;
+    }
+}
