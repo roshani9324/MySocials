@@ -296,6 +296,7 @@ const CreatePost = () => {
                 <PostEditor
                   postContent={postContent}
                   setPostContent={setPostContent}
+                  onAIAssist={() => setShowAIAssist(true)}
                 />
               </div>
             </div>

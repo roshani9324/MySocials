@@ -17,6 +17,7 @@ import {
   Bell,
   Sparkles,
   Clock3,
+  
 } from "lucide-react";
 import { useState } from "react";
 import ThemeSwitcher from "../components/ThemeSwitcher/ThemeSwitcher";
@@ -65,6 +66,7 @@ const navigation = [
 export default function DashboardLayout() {
 const [notificationsOpen, setNotificationsOpen] =
   useState(false);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
 
 const notificationRef = useRef(null);
 
@@ -301,10 +303,9 @@ useEffect(() => {
         ========================= */}
 
         <header className="dashboard-header">
-          {/* Mobile */}
-
           <div className="mobile-header-left">
             <button
+              type="button"
               onClick={() => setMobileOpen(true)}
               className="mobile-menu-button"
               aria-label="Open menu"
@@ -312,59 +313,80 @@ useEffect(() => {
               <Menu size={21} />
             </button>
 
-            <div className="mobile-brand">
+            <NavLink
+              to="/dashboard"
+              className="mobile-brand"
+              onClick={() => setMobileOpen(false)}
+            >
               <div className="logo-box">M</div>
 
               <span>MySocials</span>
-            </div>
+            </NavLink>
           </div>
 
-          {/* Search */}
+          {/* =========================
+      SEARCH
+  ========================= */}
 
           <div className="search-box">
             <Search size={14} />
 
-            <input type="text" placeholder="Search anything..." />
+            <input
+              type="search"
+              placeholder="Search anything..."
+              aria-label="Search"
+            />
 
             <kbd>⌘ K</kbd>
           </div>
 
-          {/* Header Actions */}
+          {/* =========================
+      HEADER ACTIONS
+  ========================= */}
 
           <div className="header-actions">
-            <button className="notification-btn" aria-label="Notifications">
-              <div
-                className="notification-trigger-wrapper"
-                ref={notificationRef}
-              >
-                <button
-                  type="button"
-                  className="header-icon-button"
-                  onClick={() => setNotificationsOpen((current) => !current)}
-                  aria-label="Notifications"
-                  aria-expanded={notificationsOpen}
-                >
-                  <Bell size={19} />
-
-                  <span className="notification-header-dot" />
-                </button>
-
-                {notificationsOpen && (
-                  <NotificationDropdown
-                    onClose={() => setNotificationsOpen(false)}
-                  />
-                )}
-              </div>
-
-              <span className="notification-dot" />
+            {/* Mobile Search */}
+            <button
+              type="button"
+              className="mobile-search-button"
+              aria-label="Open search"
+              onClick={() => setMobileSearchOpen(true)}
+            >
+              <Search size={18} />
             </button>
 
-            <div className="header-actions">
-              <ThemeSwitcher />
+            {/* Notifications */}
 
-              {/* Existing notification/profile buttons */}
+            <div className="notification-trigger-wrapper" ref={notificationRef}>
+              <button
+                type="button"
+                className="header-icon-button"
+                onClick={() => setNotificationsOpen((current) => !current)}
+                aria-label="Notifications"
+                aria-expanded={notificationsOpen}
+              >
+                <Bell size={19} />
+
+                <span className="notification-header-dot" />
+              </button>
+
+              {notificationsOpen && (
+                <NotificationDropdown
+                  onClose={() => setNotificationsOpen(false)}
+                />
+              )}
             </div>
+
+            {/* Theme */}
+
+            <div className="theme-header-control">
+              <ThemeSwitcher />
+            </div>
+
+            {/* Create Post */}
+
             <button
+              type="button"
               className="header-create"
               onClick={() => navigate("/create-post")}
             >
@@ -373,6 +395,8 @@ useEffect(() => {
               <span>Create Post</span>
             </button>
 
+            {/* Profile */}
+
             <UserMenu
               name="Roshani Maurya"
               workspace="Personal workspace"
@@ -380,7 +404,35 @@ useEffect(() => {
             />
           </div>
         </header>
+        {/* =========================================================
+    MOBILE SEARCH OVERLAY
+========================================================= */}
 
+        {mobileSearchOpen && (
+          <div className="mobile-search-overlay">
+            <div className="mobile-search-panel">
+              <div className="mobile-search-input-wrapper">
+                <Search size={17} />
+
+                <input
+                  type="search"
+                  autoFocus
+                  placeholder="Search posts, accounts..."
+                  aria-label="Search"
+                />
+
+                <button
+                  type="button"
+                  onClick={() => setMobileSearchOpen(false)}
+                  aria-label="Close search"
+                  className="mobile-search-close"
+                >
+                  <X size={17} />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
         {/* =========================
             PAGE CONTENT
         ========================= */}

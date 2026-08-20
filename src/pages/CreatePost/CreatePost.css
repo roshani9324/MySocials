@@ -918,3 +918,538 @@
         justify-content: center;
     }
 }
+
+/* =========================================================
+   CREATE POST — FINAL RESPONSIVE PASS
+========================================================= */
+
+/* ---------------------------------------------------------
+   TABLET
+--------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+    .create-post-container {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    .create-post-workspace {
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+        gap: 18px;
+    }
+
+    .create-post-header {
+        gap: 18px;
+    }
+
+    .create-header-actions {
+        flex-shrink: 0;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   SMALL LAPTOP / TABLET
+--------------------------------------------------------- */
+
+@media (max-width: 900px) {
+    .create-post-page {
+        overflow-x: hidden;
+    }
+
+    .create-post-container {
+        width: 100%;
+        max-width: 100%;
+
+        padding: 22px 18px 40px;
+    }
+
+    .create-post-workspace {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .create-editor-column,
+    .create-preview-column {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .create-preview-sticky {
+        position: static;
+    }
+
+    .create-preview-column {
+        order: 2;
+    }
+
+    .create-editor-column {
+        order: 1;
+    }
+
+    .create-preview-card,
+    .create-summary-card,
+    .create-card {
+        min-width: 0;
+        max-width: 100%;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   TABLET
+--------------------------------------------------------- */
+
+@media (max-width: 768px) {
+    .create-post-container {
+        padding: 20px 16px 36px;
+    }
+
+    .create-post-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+    .create-post-heading {
+        width: 100%;
+    }
+
+    .create-header-actions {
+        width: 100%;
+
+        display: flex;
+
+        gap: 8px;
+    }
+
+    .create-draft-button,
+    .create-publish-button {
+        flex: 1;
+
+        justify-content: center;
+    }
+
+    .create-post-workspace {
+        gap: 14px;
+    }
+
+    .create-card {
+        border-radius: 14px;
+    }
+
+    .create-card-header {
+        padding: 16px;
+    }
+
+    .create-card-body {
+        padding: 16px;
+    }
+
+    .create-preview-header {
+        padding: 16px;
+    }
+
+    .create-preview-content {
+        padding: 16px;
+    }
+
+    .create-summary-card {
+        padding: 16px;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 600px) {
+    .create-post-page {
+        width: 100%;
+        min-width: 0;
+
+        overflow-x: hidden;
+    }
+
+    .create-post-container {
+        width: 100%;
+        max-width: 100%;
+
+        padding: 16px 12px 32px;
+    }
+
+    /* HEADER */
+
+    .create-post-heading {
+        display: flex;
+
+        align-items: flex-start;
+
+        gap: 10px;
+    }
+
+    .create-back-button {
+        width: 34px;
+        height: 34px;
+
+        flex-shrink: 0;
+    }
+
+    .create-heading-label {
+        font-size: 8px;
+
+        letter-spacing: 0.16em;
+    }
+
+    .create-post-header h1 {
+        margin-top: 4px;
+
+        font-size: 25px;
+
+        line-height: 1.1;
+    }
+
+    .create-post-header p {
+        max-width: 100%;
+
+        margin-top: 7px;
+
+        font-size: 11px;
+
+        line-height: 1.55;
+    }
+
+    /* HEADER BUTTONS */
+
+    .create-header-actions {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 8px;
+    }
+
+    .create-draft-button,
+    .create-publish-button {
+        width: 100%;
+
+        min-height: 40px;
+
+        padding: 0 10px;
+    }
+
+    /* WORKSPACE */
+
+    .create-post-workspace {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .create-editor-column,
+    .create-preview-column {
+        width: 100%;
+    }
+
+    /* CARDS */
+
+    .create-card,
+    .create-preview-card,
+    .create-summary-card {
+        width: 100%;
+        max-width: 100%;
+
+        border-radius: 13px;
+    }
+
+    .create-card-header {
+        padding: 14px;
+    }
+
+    .create-card-body {
+        padding: 14px;
+    }
+
+    .create-card-title-wrapper {
+        min-width: 0;
+
+        gap: 10px;
+    }
+
+    .create-card-icon {
+        width: 32px;
+        height: 32px;
+
+        flex-shrink: 0;
+    }
+
+    .create-card-eyebrow {
+        font-size: 8px;
+    }
+
+    .create-card-header h2 {
+        font-size: 14px;
+
+        line-height: 1.25;
+    }
+
+    .create-card-header p {
+        margin-top: 4px;
+
+        font-size: 9px;
+
+        line-height: 1.45;
+    }
+
+    /* PLATFORM COUNT */
+
+    .create-selection-count {
+        flex-shrink: 0;
+
+        font-size: 8px;
+    }
+
+    /* EDITOR */
+
+    .create-editor-body {
+        min-width: 0;
+
+        overflow: hidden;
+    }
+
+    .create-editor-status {
+        flex-shrink: 0;
+
+        font-size: 8px;
+    }
+
+    /* SCHEDULE */
+
+    .create-schedule-footer {
+        display: flex;
+
+        align-items: stretch;
+
+        flex-direction: column;
+
+        gap: 12px;
+
+        padding: 14px;
+    }
+
+    .create-schedule-info {
+        width: 100%;
+
+        font-size: 9px;
+
+        line-height: 1.5;
+    }
+
+    .create-schedule-button {
+        width: 100%;
+
+        min-height: 40px;
+
+        justify-content: center;
+    }
+
+    /* PREVIEW */
+
+    .create-preview-sticky {
+        position: static;
+
+        width: 100%;
+    }
+
+    .create-preview-header {
+        padding: 14px;
+
+        gap: 10px;
+    }
+
+    .create-preview-header h2 {
+        font-size: 14px;
+    }
+
+    .create-preview-header p {
+        font-size: 9px;
+
+        line-height: 1.45;
+    }
+
+    .create-live-indicator {
+        flex-shrink: 0;
+    }
+
+    .create-preview-content {
+        padding: 14px;
+
+        overflow: hidden;
+    }
+
+    /* SUMMARY */
+
+    .create-summary-card {
+        padding: 14px;
+    }
+
+    .create-summary-row {
+        gap: 10px;
+    }
+
+    .create-summary-row span,
+    .create-summary-row strong {
+        font-size: 9px;
+    }
+
+    .create-summary-status {
+        gap: 9px;
+    }
+
+    .create-summary-status strong {
+        font-size: 10px;
+    }
+
+    .create-summary-status p {
+        font-size: 9px;
+
+        line-height: 1.45;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   SMALL MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 480px) {
+    .create-post-container {
+        padding: 13px 10px 28px;
+    }
+
+    .create-post-header h1 {
+        font-size: 23px;
+    }
+
+    .create-post-header p {
+        font-size: 10px;
+    }
+
+    .create-back-button {
+        width: 32px;
+        height: 32px;
+    }
+
+    .create-header-actions {
+        gap: 6px;
+    }
+
+    .create-draft-button,
+    .create-publish-button {
+        min-height: 38px;
+
+        font-size: 10px;
+    }
+
+    .create-card-header,
+    .create-card-body {
+        padding: 12px;
+    }
+
+    .create-preview-header,
+    .create-preview-content {
+        padding: 12px;
+    }
+
+    .create-summary-card {
+        padding: 12px;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   EXTRA SMALL — 375px
+--------------------------------------------------------- */
+
+@media (max-width: 375px) {
+    .create-post-container {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .create-post-heading {
+        gap: 8px;
+    }
+
+    .create-post-header h1 {
+        font-size: 21px;
+    }
+
+    .create-post-header p {
+        font-size: 9px;
+    }
+
+    .create-heading-label {
+        font-size: 7px;
+    }
+
+    .create-card-header,
+    .create-card-body,
+    .create-preview-header,
+    .create-preview-content,
+    .create-summary-card {
+        padding: 11px;
+    }
+
+    .create-card-header h2 {
+        font-size: 13px;
+    }
+
+    .create-card-header p {
+        font-size: 8px;
+    }
+
+    .create-draft-button,
+    .create-publish-button {
+        min-height: 36px;
+
+        padding: 0 7px;
+
+        font-size: 9px;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   GLOBAL CREATE POST OVERFLOW PROTECTION
+--------------------------------------------------------- */
+
+.create-post-page *,
+.create-post-page *::before,
+.create-post-page *::after {
+    box-sizing: border-box;
+}
+
+.create-post-page img,
+.create-post-page video,
+.create-post-page canvas {
+    max-width: 100%;
+}
+
+.create-post-page input,
+.create-post-page textarea,
+.create-post-page select {
+    max-width: 100%;
+}
+
+.create-post-page button {
+    -webkit-tap-highlight-color: transparent;
+}
