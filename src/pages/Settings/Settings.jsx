@@ -20,9 +20,11 @@ import {
   Download,
   CheckCircle2,
   AlertTriangle,
+  CreditCard,
 } from "lucide-react";
 import { FaInstagram, FaYoutube, FaLinkedin, FaFacebook } from "react-icons/fa";
-
+import BillingSection from "./BillingSection";
+import { useSearchParams } from "react-router-dom";
 import "./Settings.css";
 
 const settingsNavigation = [
@@ -49,6 +51,12 @@ const settingsNavigation = [
     label: "Security",
     description: "Password and protection",
     icon: Shield,
+  },
+  {
+    id: "Billing & Subscription ",
+    label: "Billing & Subscription ",
+    description: "Billing & Subscription ",
+    icon: CreditCard,
   },
   {
     id: "appearance",
@@ -181,7 +189,11 @@ export default function Settings() {
     username: "roshani",
     bio: "Social media creator and digital enthusiast.",
   });
+const [searchParams] = useSearchParams();
 
+const [activeTab, setActiveTab] = useState(
+  searchParams.get("tab") || "general",
+);
   const [notifications, setNotifications] = useState({
     email: true,
     scheduled: true,
@@ -334,6 +346,9 @@ export default function Settings() {
       </div>
     </div>
   );
+  {
+    activeTab === "billing" && <BillingSection />;
+  }
 
   const renderNotifications = () => (
     <div className="settings-panel">

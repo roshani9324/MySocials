@@ -22,6 +22,7 @@ import Contact from "./pages/Contact/Contact";
 import History from "./pages/History/History";
 import Help from "./pages/Help/Help";
 import { ThemeProvider } from "./context/ThemeContext";
+//import ConnectedAccounts from "./pages/Accounts/ConnectedAccounts";
 function Placeholder({ title }) {
   return (
     <div
@@ -70,6 +71,7 @@ function App() {
             <Route path="/content" element={<Content />} />
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/history" element={<History />} />
+            {/* <Route path="/accounts" element={<ConnectedAccounts />} /> */}
             <Route path="/accounts" element={<Accounts />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/help" element={<Help />} />

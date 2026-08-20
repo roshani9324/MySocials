@@ -14,11 +14,19 @@ import PostEditor from "./components/PostEditor";
 import PostPreview from "./components/PostPreview";
 import SchedulePicker from "./components/SchedulePicker";
 
+import AIContentAssist from "../../components/AIContentAssist/AIContentAssist";
+
 import "./CreatePost.css";
 
 const CreatePost = () => {
   const [selectedPlatforms, setSelectedPlatforms] = useState([]);
+
+  // AI Assistant
+  const [showAIAssist, setShowAIAssist] = useState(false);
+
+  // Main post content
   const [postContent, setPostContent] = useState("");
+
   const [scheduleData, setScheduleData] = useState({
     date: "",
     time: "",
@@ -26,6 +34,10 @@ const CreatePost = () => {
 
   const [activeAction, setActiveAction] = useState(null);
   const [showSuccess, setShowSuccess] = useState(false);
+
+  /* =========================================================
+     SAVE DRAFT
+  ========================================================== */
 
   const handleSaveDraft = () => {
     setActiveAction("draft");
@@ -40,6 +52,10 @@ const CreatePost = () => {
     }, 500);
   };
 
+  /* =========================================================
+     PUBLISH
+  ========================================================== */
+
   const handlePublish = () => {
     setActiveAction("publish");
 
@@ -52,6 +68,10 @@ const CreatePost = () => {
       }, 2500);
     }, 500);
   };
+
+  /* =========================================================
+     SCHEDULE
+  ========================================================== */
 
   const handleSchedule = () => {
     setActiveAction("schedule");
@@ -66,9 +86,40 @@ const CreatePost = () => {
     }, 500);
   };
 
+  /* =========================================================
+     OPEN AI ASSISTANT
+  ========================================================== */
+
+  const handleOpenAIAssist = () => {
+    setShowAIAssist(true);
+  };
+
+  /* =========================================================
+     CLOSE AI ASSISTANT
+  ========================================================== */
+
+  const handleCloseAIAssist = () => {
+    setShowAIAssist(false);
+  };
+
+  /* =========================================================
+     USE AI GENERATED CAPTION
+  ========================================================== */
+
+  const handleUseAICaption = (generatedCaption) => {
+    if (!generatedCaption) return;
+
+    setPostContent(generatedCaption);
+
+    setShowAIAssist(false);
+  };
+
   return (
     <div className="create-post-page">
-      {/* Background decoration */}
+      {/* =====================================================
+          BACKGROUND DECORATION
+      ====================================================== */}
+
       <div className="create-post-glow create-post-glow-one" />
       <div className="create-post-glow create-post-glow-two" />
 
@@ -76,6 +127,7 @@ const CreatePost = () => {
         {/* =====================================================
             HEADER
         ====================================================== */}
+
         <header className="create-post-header">
           <div className="create-post-heading">
             <button
@@ -130,6 +182,7 @@ const CreatePost = () => {
         {/* =====================================================
             SUCCESS MESSAGE
         ====================================================== */}
+
         {showSuccess && (
           <div className="create-success-message">
             <div className="create-success-icon">
@@ -138,6 +191,7 @@ const CreatePost = () => {
 
             <div>
               <strong>Action completed successfully</strong>
+
               <span>Your changes have been saved.</span>
             </div>
           </div>
@@ -146,12 +200,17 @@ const CreatePost = () => {
         {/* =====================================================
             MAIN WORKSPACE
         ====================================================== */}
+
         <main className="create-post-workspace">
           {/* ===================================================
               LEFT COLUMN
           ==================================================== */}
+
           <section className="create-editor-column">
-            {/* Platform */}
+            {/* =================================================
+                PLATFORM SELECTOR
+            ================================================== */}
+
             <div className="create-card">
               <div className="create-card-header">
                 <div className="create-card-title-wrapper">
@@ -183,7 +242,10 @@ const CreatePost = () => {
               </div>
             </div>
 
-            {/* Editor */}
+            {/* =================================================
+                POST EDITOR
+            ================================================== */}
+
             <div className="create-card create-editor-card">
               <div className="create-card-header">
                 <div className="create-card-title-wrapper">
@@ -205,6 +267,31 @@ const CreatePost = () => {
                 </span>
               </div>
 
+              {/* =================================================
+                  AI ASSIST BUTTON
+              ================================================== */}
+
+              <div className="create-ai-toolbar">
+                <div className="create-ai-toolbar-info">
+                  <Sparkles size={14} />
+
+                  <div>
+                    <strong>Need help with your content?</strong>
+
+                    <span>Use AI to create captions or get content ideas.</span>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  className="create-ai-assist-button"
+                  onClick={handleOpenAIAssist}
+                >
+                  <Sparkles size={14} />
+                  AI Assist
+                </button>
+              </div>
+
               <div className="create-card-body create-editor-body">
                 <PostEditor
                   postContent={postContent}
@@ -213,7 +300,10 @@ const CreatePost = () => {
               </div>
             </div>
 
-            {/* Schedule */}
+            {/* =================================================
+                SCHEDULE
+            ================================================== */}
+
             <div className="create-card">
               <div className="create-card-header">
                 <div className="create-card-title-wrapper">
@@ -264,8 +354,13 @@ const CreatePost = () => {
           {/* ===================================================
               RIGHT COLUMN
           ==================================================== */}
+
           <aside className="create-preview-column">
             <div className="create-preview-sticky">
+              {/* =================================================
+                  LIVE PREVIEW
+              ================================================== */}
+
               <div className="create-preview-card">
                 <div className="create-preview-header">
                   <div>
@@ -290,7 +385,10 @@ const CreatePost = () => {
                 </div>
               </div>
 
-              {/* Publishing Summary */}
+              {/* =================================================
+                  PUBLISHING SUMMARY
+              ================================================== */}
+
               <div className="create-summary-card">
                 <div className="create-summary-header">
                   <span>POST SUMMARY</span>
@@ -340,6 +438,18 @@ const CreatePost = () => {
           </aside>
         </main>
       </div>
+
+      {/* =======================================================
+          AI CONTENT ASSIST MODAL
+      ======================================================== */}
+
+      {showAIAssist && (
+        <AIContentAssist
+          caption={postContent}
+          onClose={handleCloseAIAssist}
+          onUseCaption={handleUseAICaption}
+        />
+      )}
     </div>
   );
 };

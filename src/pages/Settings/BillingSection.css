@@ -1,0 +1,549 @@
+.billing-section {
+    width: 100%;
+    max-width: 1100px;
+
+    padding: 28px 30px 40px;
+
+    color: var(--text-primary);
+}
+
+/* Heading */
+
+.billing-heading {
+    margin-bottom: 26px;
+}
+
+.billing-eyebrow {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--accent-secondary);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+}
+
+.billing-heading h2 {
+    margin: 0;
+
+    font-size: 25px;
+    font-weight: 750;
+
+    letter-spacing: -0.025em;
+}
+
+.billing-heading p {
+    margin: 7px 0 0;
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+}
+
+/* Current plan */
+
+.current-plan-card {
+    display: grid;
+
+    grid-template-columns: 1fr auto auto;
+
+    align-items: center;
+
+    gap: 22px;
+
+    padding: 20px;
+
+    border: 1px solid color-mix(in srgb,
+            var(--accent-color) 28%,
+            var(--border-color));
+
+    border-radius: 17px;
+
+    background:
+        radial-gradient(circle at 90% 10%,
+            color-mix(in srgb,
+                var(--accent-color) 9%,
+                transparent),
+            transparent 35%),
+        var(--surface-color);
+
+    box-shadow: var(--shadow-sm);
+}
+
+.current-plan-main {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+}
+
+.current-plan-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    background: color-mix(in srgb,
+            var(--accent-color) 12%,
+            transparent);
+
+    color: var(--accent-secondary);
+}
+
+.current-plan-label {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--text-muted);
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+}
+
+.current-plan-main h3 {
+    margin: 0;
+
+    font-size: 16px;
+}
+
+.current-plan-main p {
+    margin: 4px 0 0;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+}
+
+.current-plan-price {
+    display: flex;
+    align-items: baseline;
+
+    gap: 3px;
+
+    white-space: nowrap;
+}
+
+.current-plan-price strong {
+    font-size: 19px;
+}
+
+.current-plan-price span {
+    color: var(--text-muted);
+
+    font-size: 10px;
+}
+
+.manage-subscription-button,
+.billing-plan-button,
+.billing-secondary-button {
+    min-height: 35px;
+
+    padding: 0 13px;
+
+    border-radius: 9px;
+
+    font-size: 10px;
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease;
+}
+
+.manage-subscription-button {
+    border: 1px solid var(--border-color);
+
+    background: var(--surface-hover);
+
+    color: var(--text-primary);
+}
+
+.manage-subscription-button:hover {
+    border-color: var(--accent-color);
+
+    transform: translateY(-1px);
+}
+
+/* Plans */
+
+.available-plans {
+    margin-top: 36px;
+}
+
+.plans-heading {
+    margin-bottom: 15px;
+}
+
+.plans-heading h3 {
+    margin: 0;
+
+    font-size: 16px;
+}
+
+/* Grid */
+
+.plans-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+/* Card */
+
+.billing-plan-card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 350px;
+
+    padding: 20px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+
+    background: var(--surface-color);
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.billing-plan-card:hover {
+    transform: translateY(-3px);
+
+    border-color: color-mix(in srgb,
+            var(--accent-color) 32%,
+            var(--border-color));
+
+    box-shadow: var(--shadow-md);
+}
+
+.billing-plan-current {
+    border-color: color-mix(in srgb,
+            var(--accent-color) 45%,
+            var(--border-color));
+
+    background:
+        radial-gradient(circle at 90% 0%,
+            color-mix(in srgb,
+                var(--accent-color) 9%,
+                transparent),
+            transparent 42%),
+        var(--surface-color);
+}
+
+/* Badge */
+
+.current-plan-badge {
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    padding: 5px 8px;
+
+    border-radius: 999px;
+
+    background: color-mix(in srgb,
+            var(--accent-color) 12%,
+            transparent);
+
+    color: var(--accent-secondary);
+
+    font-size: 8px;
+    font-weight: 750;
+
+    letter-spacing: 0.03em;
+}
+
+/* Plan icon */
+
+.billing-plan-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    margin-bottom: 14px;
+
+    border-radius: 10px;
+
+    background: var(--surface-hover);
+
+    color: var(--accent-secondary);
+}
+
+.billing-plan-card h4 {
+    margin: 0;
+
+    font-size: 16px;
+}
+
+.billing-plan-description {
+    min-height: 31px;
+
+    margin: 5px 0 0;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+/* Price */
+
+.billing-plan-price {
+    display: flex;
+    align-items: baseline;
+
+    gap: 4px;
+
+    margin-top: 18px;
+}
+
+.billing-plan-price strong {
+    font-size: 24px;
+
+    letter-spacing: -0.03em;
+}
+
+.billing-plan-price span {
+    color: var(--text-muted);
+
+    font-size: 9px;
+}
+
+/* Divider */
+
+.billing-plan-divider {
+    height: 1px;
+
+    margin: 17px 0;
+
+    background: var(--border-color);
+}
+
+/* Features */
+
+.billing-plan-features {
+    display: flex;
+    flex-direction: column;
+
+    gap: 9px;
+
+    flex: 1;
+}
+
+.billing-feature {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 8px;
+}
+
+.billing-feature>span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 17px;
+    height: 17px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: color-mix(in srgb,
+            var(--accent-color) 10%,
+            transparent);
+
+    color: var(--accent-secondary);
+}
+
+.billing-feature p {
+    margin: 1px 0 0;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+}
+
+/* Buttons */
+
+.billing-plan-button {
+    width: 100%;
+
+    margin-top: 20px;
+
+    border: 1px solid var(--border-color);
+
+    background: var(--surface-hover);
+
+    color: var(--text-primary);
+}
+
+.billing-plan-button:hover:not(:disabled) {
+    border-color: var(--accent-color);
+
+    background: color-mix(in srgb,
+            var(--accent-color) 8%,
+            var(--surface-hover));
+
+    transform: translateY(-1px);
+}
+
+.billing-plan-button-current {
+    border-color: var(--accent-color);
+
+    background: var(--accent-color);
+
+    color: var(--accent-contrast);
+
+    cursor: default;
+}
+
+/* Payment */
+
+.payment-method-card {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    margin-top: 22px;
+    padding: 17px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+
+    background: var(--surface-color);
+}
+
+.payment-method-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: var(--surface-hover);
+
+    color: var(--accent-secondary);
+}
+
+.payment-method-content {
+    flex: 1;
+}
+
+.payment-method-content h3 {
+    margin: 0;
+
+    font-size: 13px;
+}
+
+.payment-method-content p {
+    margin: 4px 0 0;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+}
+
+.billing-secondary-button {
+    border: 1px solid var(--border-color);
+
+    background: var(--surface-hover);
+
+    color: var(--text-secondary);
+}
+
+.billing-secondary-button:hover {
+    color: var(--text-primary);
+
+    border-color: var(--accent-color);
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    .current-plan-card {
+        grid-template-columns: 1fr auto;
+    }
+
+    .current-plan-price {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .manage-subscription-button {
+        grid-column: 1 / -1;
+    }
+
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .billing-plan-card {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .billing-section {
+        padding: 20px 15px 30px;
+    }
+
+    .current-plan-card {
+        display: flex;
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .current-plan-price {
+        display: flex;
+    }
+
+    .manage-subscription-button {
+        width: 100%;
+    }
+
+    .payment-method-card {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .billing-secondary-button {
+        width: 100%;
+    }
+}

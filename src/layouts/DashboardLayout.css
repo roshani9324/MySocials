@@ -1,0 +1,19 @@
+.notification-trigger-wrapper {
+    position: relative;
+}
+
+.notification-header-dot {
+    position: absolute;
+
+    top: 6px;
+    right: 6px;
+
+    width: 6px;
+    height: 6px;
+
+    border: 1.5px solid var(--surface-color);
+
+    border-radius: 50%;
+
+    background: var(--accent-color);
+}

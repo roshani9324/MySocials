@@ -5,9 +5,7 @@ import {
   CalendarDays,
   FileText,
   BarChart3,
-  CircleHelp
-          ,
-
+  CircleHelp,
   Users,
   Settings,
   Menu,
@@ -22,6 +20,9 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import ThemeSwitcher from "../components/ThemeSwitcher/ThemeSwitcher";
+import { useEffect, useRef } from "react";
+import NotificationDropdown from "../components/Notifications/NotificationDropdown";
+import UserMenu from "../components/UserMenu/UserMenu";
 
 const navigation = [
   {
@@ -59,10 +60,40 @@ const navigation = [
     path: "/accounts",
     icon: Users,
   },
-  
 ];
 
 export default function DashboardLayout() {
+const [notificationsOpen, setNotificationsOpen] =
+  useState(false);
+
+const notificationRef = useRef(null);
+
+useEffect(() => {
+  const handleOutsideClick = (event) => {
+    if (
+      notificationRef.current &&
+      !notificationRef.current.contains(event.target)
+    ) {
+      setNotificationsOpen(false);
+    }
+  };
+
+  document.addEventListener(
+    "mousedown",
+    handleOutsideClick
+  );
+
+  return () => {
+    document.removeEventListener(
+      "mousedown",
+      handleOutsideClick
+    );
+  };
+}, []);
+
+
+
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
 
@@ -302,7 +333,28 @@ export default function DashboardLayout() {
 
           <div className="header-actions">
             <button className="notification-btn" aria-label="Notifications">
-              <Bell size={17} />
+              <div
+                className="notification-trigger-wrapper"
+                ref={notificationRef}
+              >
+                <button
+                  type="button"
+                  className="header-icon-button"
+                  onClick={() => setNotificationsOpen((current) => !current)}
+                  aria-label="Notifications"
+                  aria-expanded={notificationsOpen}
+                >
+                  <Bell size={19} />
+
+                  <span className="notification-header-dot" />
+                </button>
+
+                {notificationsOpen && (
+                  <NotificationDropdown
+                    onClose={() => setNotificationsOpen(false)}
+                  />
+                )}
+              </div>
 
               <span className="notification-dot" />
             </button>
@@ -321,7 +373,11 @@ export default function DashboardLayout() {
               <span>Create Post</span>
             </button>
 
-            <div className="header-avatar">RM</div>
+            <UserMenu
+              name="Roshani Maurya"
+              workspace="Personal workspace"
+              initials="RM"
+            />
           </div>
         </header>
 
